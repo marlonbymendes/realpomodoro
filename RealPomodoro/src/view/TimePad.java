@@ -28,7 +28,10 @@ public class TimePad extends JPanel {
 		
 		for(int i = 0; i < timeDigits.length; ++i) {
 			timeDigits[i] = new JLabel();
-			timeDigits[i].setFont(new Font("Courier New", Font.PLAIN, 100));
+			
+			final Font digitFont = new Font(FontConstants.APP_FONT_NAME,
+											FontConstants.APP_FONT_STYLE, FontConstants.APP_FONT_SIZE);
+			timeDigits[i].setFont(digitFont);
 			updateTimeDigit(i, 0);
 		}
 	}
