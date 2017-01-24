@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.BoxLayout;
@@ -19,6 +20,9 @@ public class TimePad extends JPanel {
 		setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 		setAlignmentX(JPanel.CENTER_ALIGNMENT);
 		
+		setBackground(AppColors.HOME_BACKGROUND);
+		setOpaque(true);
+		
 		addAllDigits();
 	}
 	
@@ -32,6 +36,7 @@ public class TimePad extends JPanel {
 			final Font digitFont = new Font(FontConstants.APP_FONT_NAME,
 											FontConstants.APP_FONT_STYLE, FontConstants.APP_FONT_SIZE);
 			timeDigits[i].setFont(digitFont);
+			timeDigits[i].setForeground(AppColors.TIME_PAD_DIGITS);
 			updateTimeDigit(i, 0);
 		}
 	}
@@ -50,6 +55,7 @@ public class TimePad extends JPanel {
 		final String TWO_POINTS = ":";
 		twoPoints = new JLabel(TWO_POINTS);
 		twoPoints.setFont(new Font("Courier New", Font.PLAIN, 100));
+		twoPoints.setForeground(AppColors.TIME_PAD_DIGITS);
 	}
 	
 	private void addAllDigits() {

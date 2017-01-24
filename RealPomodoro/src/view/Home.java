@@ -44,6 +44,8 @@ public class Home {
 		home.setLayout(new BoxLayout(home.getContentPane(), BoxLayout.PAGE_AXIS));
 		home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		home.getRootPane().setDefaultButton(startButton);
+		
+		home.getContentPane().setBackground(AppColors.HOME_BACKGROUND);
 	}
 	
 	private void addAllComponentsToHome() {
@@ -61,11 +63,13 @@ public class Home {
 		startButtonPanel = new JPanel();
 		startButtonPanel.setLayout(new BoxLayout(startButtonPanel, BoxLayout.LINE_AXIS));
 		
-		final Dimension startButtonTopPadDimension = new Dimension(0, 250);
+		final Dimension startButtonTopPadDimension = new Dimension(0, 400);
 		final Component startButtonTopPad = Box.createRigidArea(startButtonTopPadDimension);
 		
 		startButtonPanel.add(startButtonTopPad);
 		startButtonPanel.add(startButton);
+		startButtonPanel.setBackground(AppColors.HOME_BACKGROUND);
+		startButtonPanel.setOpaque(true);
 	}
 	
 	public void show() {
