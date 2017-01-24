@@ -23,6 +23,7 @@ public class Home {
 		setStartButtonPanel();
 		setHome();
 		
+		PomodoroTimer pomodoroTimer = new PomodoroTimer(timePad);
 	}
 	
 	private void setTimePad() {

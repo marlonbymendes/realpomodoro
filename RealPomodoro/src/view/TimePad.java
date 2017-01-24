@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.BoxLayout;
@@ -11,6 +10,9 @@ public class TimePad extends JPanel {
 
 	JLabel twoPoints;
 	JLabel timeDigits[];
+	
+	final int SECONDS_START = 2;
+	final int MINUTES_START = 0;
 	
 	private static final long serialVersionUID = -7368579241109062499L;
 	
@@ -24,6 +26,23 @@ public class TimePad extends JPanel {
 		setOpaque(true);
 		
 		addAllDigits();
+	}
+	
+	private void updateTime(final int index, final int time) {
+		final int firstDigit = time / 10;
+		updateTimeDigit(index, firstDigit);
+		
+		final int secondDigit = time % 10;
+		updateTimeDigit(index + 1, secondDigit);
+		
+	}
+	
+	public void updateSeconds(final int seconds) {
+		updateTime(SECONDS_START, seconds);
+	}
+	
+	public void updateMinutes(final int minutes) {
+		updateTime(MINUTES_START, minutes);
 	}
 	
 	private void initTimeDigits() {
@@ -61,14 +80,13 @@ public class TimePad extends JPanel {
 	private void addAllDigits() {
 		initDigits();
 		
-		final int MINUTES_SIZE = 2;
-		for(int i = 0; i < MINUTES_SIZE; ++i) {
+		final int MINUTES_ENDING = 2;
+		for(int i = MINUTES_START; i < MINUTES_ENDING; ++i) {
 			add(timeDigits[i]);
 		}
 		
 		add(twoPoints);
 		
-		final int SECONDS_START = 2;
 		final int SECONDS_ENDING = 4;
 		for(int i = SECONDS_START; i < SECONDS_ENDING; ++i) {
 			add(timeDigits[i]);
