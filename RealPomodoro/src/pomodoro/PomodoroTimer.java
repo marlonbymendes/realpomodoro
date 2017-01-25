@@ -36,6 +36,8 @@ public class PomodoroTimer implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent event) {
+		assert(pomodoro != null);
+		
 		if(counting && pomodoro.getTotalTime() > 0) {
 			pomodoro.update();
 			
@@ -45,7 +47,7 @@ public class PomodoroTimer implements ActionListener {
 			timePad.updateMinutes(currentMinutes);
 			timePad.updateSeconds(currentSeconds);
 		}
-		else if(counting && pomodoro.getTotalTime() == 0) {
+		else if(counting && pomodoro.isOver()) {
 			stopWatch.stop();
 			setCounting(false);
 			if(home != null) {
@@ -68,7 +70,12 @@ public class PomodoroTimer implements ActionListener {
 	}
 	
 	public void play() {
-		setCounting(true);
+		if(pomodoro.isOver()) {
+			restart();
+		}
+		else {
+			setCounting(true);
+		}
 	}
 	
 	public void stop() {
@@ -82,5 +89,13 @@ public class PomodoroTimer implements ActionListener {
 	
 	private void setHome(final Home home) {
 		this.home = home;
+	}
+	
+	public void restart() {
+		setCounting(true);
+		setPomodoro();
+		stopWatch.restart();
+		timePad.updateMinutes(pomodoro.getMinutes());
+		timePad.updateSeconds(pomodoro.getSeconds());
 	}
 }

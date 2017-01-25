@@ -2,33 +2,24 @@ package pomodoro;
 
 public class Pomodoro {
 
-	private Integer minutes;
-	private Integer seconds;
+	private Integer initialMinutes;
+	private Integer initialSeconds;
+	
+	private Integer currentMinutes;
+	private Integer currentSeconds;
 	
 	public Pomodoro() {
-		setMinutes(PomodoroConstants.DEFAULT_MINUTES);
-		setSeconds(PomodoroConstants.DEFAULT_SECONDS);
-	}
-	
-	public Integer getMinutes() {
-		return minutes;
-	}
-
-	private void setMinutes(final Integer minutes) {
-		this.minutes = minutes;
-	}
-
-	public Integer getSeconds() {
-		return seconds;
-	}
-
-	private void setSeconds(final Integer seconds) {
-		this.seconds = seconds;
-	}
-	
-	public int getTotalTime() {
-		int totalTime = minutes * PomodoroConstants.SECONDS_IN_A_MINUTE + seconds;
+		setInitialMinutes(PomodoroConstants.DEFAULT_MINUTES);
+		setInitialSeconds(PomodoroConstants.DEFAULT_SECONDS);
 		
+		setCurrentMinutes(PomodoroConstants.DEFAULT_MINUTES);
+		setCurrentSeconds(PomodoroConstants.DEFAULT_SECONDS);
+	}
+		
+	public int getTotalTime() {
+		assert(currentMinutes != null);
+		assert(currentSeconds != null);
+		int totalTime = currentMinutes * PomodoroConstants.SECONDS_IN_A_MINUTE + currentSeconds;	
 		return totalTime;
 	}
 	
@@ -39,8 +30,8 @@ public class Pomodoro {
 	}
 	
 	private void updateSeconds() {
-		if(seconds > 0) {
-			--seconds;
+		if(currentSeconds > 0) {
+			--currentSeconds;
 		}
 		else {
 			updateMinutes();
@@ -49,8 +40,42 @@ public class Pomodoro {
 	}
 	
 	private void updateMinutes() {
-		assert(minutes > 0);
-		minutes--;
-		seconds += PomodoroConstants.SECONDS_IN_A_MINUTE;
+		assert(currentMinutes > 0);
+		currentMinutes--;
+		currentSeconds += PomodoroConstants.SECONDS_IN_A_MINUTE;
 	}
+	
+	public void restart() {
+		setCurrentMinutes(initialMinutes);
+		setCurrentSeconds(initialSeconds);
+	}
+	
+	public boolean isOver() {
+		return getTotalTime() == 0;
+	}
+	
+	private void setCurrentMinutes(final Integer currentMinutes) {
+		this.currentMinutes = currentMinutes;
+	}
+
+	private void setCurrentSeconds(final Integer currentSeconds) {
+		this.currentSeconds = currentSeconds;
+	}
+	
+	public Integer getMinutes() {
+		return currentMinutes;
+	}
+
+	private void setInitialMinutes(final Integer minutes) {
+		this.currentMinutes = minutes;
+	}
+
+	public Integer getSeconds() {
+		return currentSeconds;
+	}
+
+	private void setInitialSeconds(final Integer seconds) {
+		this.currentSeconds = seconds;
+	}
+	
 }

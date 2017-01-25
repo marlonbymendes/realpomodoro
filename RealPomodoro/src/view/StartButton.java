@@ -17,12 +17,9 @@ public class StartButton extends JButton {
 	
 	private static final long serialVersionUID = -6839276097281926270L;
 	
-	private boolean startStatus;
-	
 	public StartButton(final PomodoroTimer pomodoroTimer) {
 		super();
 		
-		setStartStatus(true);
 		setPomodoroTimer(pomodoroTimer);
 		
 		setBorderPainted(false);
@@ -40,21 +37,18 @@ public class StartButton extends JButton {
 	
 
 		public void actionPerformed(final ActionEvent event) {
+			final String currentStatusText = getStatusText();
+			boolean startStatus = currentStatusText.equals(START_BUTTON_NAME);
+			
 			if(startStatus) {
 				setPauseButtonStyle();
-				setStartStatus(false);
 				pomodoroTimer.play();
 			}
 			else {
 				setStartButtonStyle();
-				setStartStatus(true);
 				pomodoroTimer.stop();
 			}
 		}
-	}
-	
-	private void setStartStatus(final boolean status) {
-		this.startStatus = status;
 	}
 	
 	public void setStartButtonStyle() {
@@ -69,5 +63,9 @@ public class StartButton extends JButton {
 	
 	private void setPomodoroTimer(final PomodoroTimer pomodoroTime) {
 		this.pomodoroTimer = pomodoroTime;
+	}
+	
+	private String getStatusText() {
+		return getText();
 	}
 }
