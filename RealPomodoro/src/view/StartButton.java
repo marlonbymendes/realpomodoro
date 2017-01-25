@@ -1,13 +1,16 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import pomodoro.PomodoroTimer;
+
 public class StartButton extends JButton {
+	
+	PomodoroTimer pomodoroTimer;
 	
 	private final static String START_BUTTON_NAME = "START";
 	private final static String PAUSE_BUTTON_NAME = "PAUSE";
@@ -16,10 +19,11 @@ public class StartButton extends JButton {
 	
 	private boolean startStatus;
 	
-	public StartButton() {
+	public StartButton(final PomodoroTimer pomodoroTimer) {
 		super();
 		
 		setStartStatus(true);
+		setPomodoroTimer(pomodoroTimer);
 		
 		setBorderPainted(false);
 		setFocusPainted(false);
@@ -39,11 +43,12 @@ public class StartButton extends JButton {
 			if(startStatus) {
 				setPauseButtonStyle();
 				setStartStatus(false);
-				
+				pomodoroTimer.play();
 			}
 			else {
 				setStartButtonStyle();
 				setStartStatus(true);
+				pomodoroTimer.stop();
 			}
 		}
 	}
@@ -52,7 +57,7 @@ public class StartButton extends JButton {
 		this.startStatus = status;
 	}
 	
-	private void setStartButtonStyle() {
+	public void setStartButtonStyle() {
 		setBackground(AppColors.APP_GREEN);
 		setText(START_BUTTON_NAME);
 	}
@@ -60,5 +65,9 @@ public class StartButton extends JButton {
 	private void setPauseButtonStyle() {
 		setBackground(AppColors.APP_RED);
 		setText(PAUSE_BUTTON_NAME);
+	}
+	
+	private void setPomodoroTimer(final PomodoroTimer pomodoroTime) {
+		this.pomodoroTimer = pomodoroTime;
 	}
 }

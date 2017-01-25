@@ -2,17 +2,12 @@ package pomodoro;
 
 public class Pomodoro {
 
-	private Integer DEFAULT_MINUTES = 25;
-	private Integer DEFAULT_SECONDS = 0;
-	
 	private Integer minutes;
 	private Integer seconds;
-
-	final int SECONDS_IN_A_MINUTE = 60;
 	
 	public Pomodoro() {
-		setMinutes(DEFAULT_MINUTES);
-		setSeconds(DEFAULT_SECONDS);
+		setMinutes(PomodoroConstants.DEFAULT_MINUTES);
+		setSeconds(PomodoroConstants.DEFAULT_SECONDS);
 	}
 	
 	public Integer getMinutes() {
@@ -32,13 +27,15 @@ public class Pomodoro {
 	}
 	
 	public int getTotalTime() {
-		int totalTime = minutes * SECONDS_IN_A_MINUTE + seconds;
+		int totalTime = minutes * PomodoroConstants.SECONDS_IN_A_MINUTE + seconds;
 		
 		return totalTime;
 	}
 	
 	public void update() {
 		updateSeconds();
+	
+		System.out.printf("Current total time: %d\n", getTotalTime());
 	}
 	
 	private void updateSeconds() {
@@ -54,6 +51,6 @@ public class Pomodoro {
 	private void updateMinutes() {
 		assert(minutes > 0);
 		minutes--;
-		seconds += SECONDS_IN_A_MINUTE;
+		seconds += PomodoroConstants.SECONDS_IN_A_MINUTE;
 	}
 }

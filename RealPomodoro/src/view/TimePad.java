@@ -6,6 +6,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import pomodoro.PomodoroConstants;
+
 public class TimePad extends JPanel {
 
 	JLabel twoPoints;
@@ -56,7 +58,6 @@ public class TimePad extends JPanel {
 											FontConstants.APP_FONT_STYLE, FontConstants.APP_FONT_SIZE);
 			timeDigits[i].setFont(digitFont);
 			timeDigits[i].setForeground(AppColors.TIME_PAD_DIGITS);
-			updateTimeDigit(i, 0);
 		}
 	}
 	
@@ -67,6 +68,8 @@ public class TimePad extends JPanel {
 	
 	private void initDigits() {
 		initTimeDigits();
+		updateSeconds(PomodoroConstants.DEFAULT_SECONDS);
+		updateMinutes(PomodoroConstants.DEFAULT_MINUTES);
 		setTwoPointsLabel();
 	}
 	

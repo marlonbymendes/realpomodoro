@@ -6,10 +6,12 @@ import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Home {
+import pomodoro.PomodoroTimer;
 
+public class Home {
 	
 	JFrame home;
 
@@ -17,21 +19,22 @@ public class Home {
 	TimePad timePad;
 	StartButton startButton;
 	
+	PomodoroTimer pomodoroTimer;
+	
 	public Home() {
 		setTimePad();
-		setStartButton();
+		setPomodoroTimer();
+		setStartButton(pomodoroTimer);
 		setStartButtonPanel();
 		setHome();
-		
-		PomodoroTimer pomodoroTimer = new PomodoroTimer(timePad);
 	}
 	
 	private void setTimePad() {
 		timePad = new TimePad();
 	}
 	
-	private void setStartButton() {
-		startButton = new StartButton();
+	private void setStartButton(final PomodoroTimer pomodoroTime) {
+		startButton = new StartButton(pomodoroTime);
 	}
 	
 	private void setHome() {
@@ -75,5 +78,15 @@ public class Home {
 	
 	public void show() {
 		home.setVisible(true);
+	}
+	
+	private void setPomodoroTimer() {
+		pomodoroTimer = new PomodoroTimer(timePad, this);
+	}
+	
+	public void pomodoroIsOver() {
+		home.toFront();
+		startButton.setStartButtonStyle();
+		JOptionPane.showMessageDialog(null, "Pomodoro is over.");
 	}
 }
