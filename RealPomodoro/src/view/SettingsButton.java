@@ -1,6 +1,6 @@
 package view;
 
-import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,11 +23,7 @@ public class SettingsButton extends JButton {
 		setOpaque(true);
 		setBackground(AppColors.HOME_BACKGROUND);
 		
-		final int BUTTON_X_DIMENSION = 40;
-		final int BUTTON_Y_DIMENSION = 40;
-		final Dimension buttonDimension = new Dimension(BUTTON_X_DIMENSION, BUTTON_Y_DIMENSION);
-		setMinimumSize(buttonDimension);
-		setMaximumSize(buttonDimension);
+		setMargin(new Insets(0, 0, 0, 0));
 		
 		addActionListener(new SettingsButtonListener());
 		setSettingsIcon();

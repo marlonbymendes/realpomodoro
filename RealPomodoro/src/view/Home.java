@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Insets;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -106,7 +107,7 @@ public class Home {
 	
 	private void setSettingsButtonPanel() {
 		settingsButtonPanel = new JPanel();
-		settingsButtonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		settingsButtonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
 		settingsButtonPanel.setBackground(AppColors.HOME_BACKGROUND);
 		
 		SettingsButton settingsButton = new SettingsButton();
@@ -118,7 +119,7 @@ public class Home {
 	}
 	
 	private void setHomeBorder() {
-		Border border = BorderFactory.createLineBorder(AppColors.HOME_BACKGROUND, 15);
+		Border border = BorderFactory.createLineBorder(AppColors.HOME_BACKGROUND, 10);
 		home.getRootPane().setBorder(border);
 	}
 }

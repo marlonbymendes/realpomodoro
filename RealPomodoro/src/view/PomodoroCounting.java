@@ -38,7 +38,7 @@ public class PomodoroCounting extends JPanel {
 	}
 	
 	private void initPomodoroCounting() {
-		setLayout(new FlowLayout(FlowLayout.LEFT));
+		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		setBackground(AppColors.HOME_BACKGROUND);
 		
 		initLabels();
