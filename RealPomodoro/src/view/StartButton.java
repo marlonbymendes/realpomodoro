@@ -1,12 +1,10 @@
 package view;
 
 import java.awt.Dimension;
-import java.awt.Image;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -74,24 +72,13 @@ public class StartButton extends JButton {
 	
 	private void setImageIcon(final String fileName) {
 		try {
-			ImageIcon imageIcon = createIconFromResources(fileName);
+			ImageIcon imageIcon = (new AppColors()).createIconFromResources(fileName);
 			setIcon(imageIcon);
 			
 		} catch (Exception ex) {
 		    System.out.println("Can't load icon with name: " + fileName);
 		}
 		
-	}
-	
-	private ImageIcon createIconFromResources(final String fileName) throws IOException {
-		final String iconsFolder = "resources/icons/";
-		final String filePath = iconsFolder + fileName;
-		
-		ClassLoader classLoader = this.getClass().getClassLoader();
-		Image image = ImageIO.read(classLoader.getResource(filePath));
-		ImageIcon imageIcon = new ImageIcon(image);
-		
-		return imageIcon;
 	}
 	
 	private void initButton() {

@@ -1,10 +1,9 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
+import java.awt.FlowLayout;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -21,6 +20,7 @@ public class Home {
 	JPanel startButtonPanel;
 	TimePad timePad;
 	StartButton startButton;
+	JPanel settingsButtonPanel;
 	
 	PomodoroTimer pomodoroTimer;
 	
@@ -29,6 +29,9 @@ public class Home {
 	public static final int HOME_Y_SIZE = 450;
 	
 	public Home() {
+		
+		setSettingsButtonPanel();
+		
 		setTimePad();
 		setPomodoroTimer();
 		setStartButton(pomodoroTimer);
@@ -60,13 +63,14 @@ public class Home {
 	}
 	
 	private void addAllComponentsToHome() {
+		home.add(settingsButtonPanel);
 		setTopPad();
 		home.add(timePad);
 		home.add(startButtonPanel);
 	}
 	
 	private void setTopPad() {
-		home.add(Box.createRigidArea(new Dimension(1, 50)));
+		home.add(Box.createRigidArea(new Dimension(1, 15)));
 	}
 	
 
@@ -95,5 +99,14 @@ public class Home {
 		home.toFront();
 		startButton.setStartButtonStyle();
 		JOptionPane.showMessageDialog(null, "Pomodoro is over.");
+	}
+	
+	private void setSettingsButtonPanel() {
+		settingsButtonPanel = new JPanel();
+		settingsButtonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		settingsButtonPanel.setBackground(AppColors.HOME_BACKGROUND);
+		
+		SettingsButton settingsButton = new SettingsButton();
+		settingsButtonPanel.add(settingsButton);
 	}
 }
