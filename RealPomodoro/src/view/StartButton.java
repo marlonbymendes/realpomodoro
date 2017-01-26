@@ -1,9 +1,13 @@
 package view;
 
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import pomodoro.PomodoroTimer;
@@ -12,29 +16,16 @@ public class StartButton extends JButton {
 	
 	PomodoroTimer pomodoroTimer;
 	
-	private final static String START_BUTTON_NAME = "START";
-	private final static String PAUSE_BUTTON_NAME = "PAUSE";
+	private final static String START_BUTTON_NAME = "S";
+	private final static String PAUSE_BUTTON_NAME = "P";
 	
 	private static final long serialVersionUID = -6839276097281926270L;
 	
 	public StartButton(final PomodoroTimer pomodoroTimer) {
 		super();
 		
+		initButton();
 		setPomodoroTimer(pomodoroTimer);
-		
-		setBorderPainted(false);
-		setFocusPainted(false);
-		setContentAreaFilled(false);
-		setOpaque(true);
-		
-		final int BUTTON_Y_DIMENSION = 40;
-		final Dimension buttonDimension = new Dimension(Home.HOME_X_SIZE, BUTTON_Y_DIMENSION);
-		
-		setMinimumSize(buttonDimension);
-		setMaximumSize(buttonDimension);
-		
-		addActionListener(new StartButtonListener());
-		setStartButtonStyle();
 	}
 	
 	private class StartButtonListener implements ActionListener {
@@ -56,13 +47,21 @@ public class StartButton extends JButton {
 	}
 	
 	public void setStartButtonStyle() {
-		setBackground(AppColors.APP_GREEN);
 		setText(START_BUTTON_NAME);
+		setBackground(AppColors.APP_GREEN);
+		setForeground(AppColors.APP_GREEN);
+
+		final String playIconName = "play.png";
+		setImageIcon(playIconName);
 	}
 	
 	private void setPauseButtonStyle() {
-		setBackground(AppColors.APP_RED);
 		setText(PAUSE_BUTTON_NAME);
+		setBackground(AppColors.APP_RED);
+		setForeground(AppColors.APP_RED);
+		
+		final String playIconName = "pause.png";
+		setImageIcon(playIconName);
 	}
 	
 	private void setPomodoroTimer(final PomodoroTimer pomodoroTime) {
@@ -71,5 +70,43 @@ public class StartButton extends JButton {
 	
 	private String getStatusText() {
 		return getText();
+	}
+	
+	private void setImageIcon(final String fileName) {
+		try {
+			ImageIcon imageIcon = createIconFromResources(fileName);
+			setIcon(imageIcon);
+			
+		} catch (Exception ex) {
+		    System.out.println("Can't load icon with name: " + fileName);
+		}
+		
+	}
+	
+	private ImageIcon createIconFromResources(final String fileName) throws IOException {
+		final String iconsFolder = "resources/icons/";
+		final String filePath = iconsFolder + fileName;
+		
+		ClassLoader classLoader = this.getClass().getClassLoader();
+		Image image = ImageIO.read(classLoader.getResource(filePath));
+		ImageIcon imageIcon = new ImageIcon(image);
+		
+		return imageIcon;
+	}
+	
+	private void initButton() {
+		setBorderPainted(false);
+		setFocusPainted(false);
+		setContentAreaFilled(false);
+		setOpaque(true);
+		
+		final int BUTTON_X_DIMENSION = (int) (Home.HOME_X_SIZE * 0.90);
+		final int BUTTON_Y_DIMENSION = 40;
+		final Dimension buttonDimension = new Dimension(BUTTON_X_DIMENSION, BUTTON_Y_DIMENSION);
+		setMinimumSize(buttonDimension);
+		setMaximumSize(buttonDimension);
+		
+		addActionListener(new StartButtonListener());
+		setStartButtonStyle();
 	}
 }

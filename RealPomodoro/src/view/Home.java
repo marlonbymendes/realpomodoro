@@ -2,6 +2,9 @@ package view;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
