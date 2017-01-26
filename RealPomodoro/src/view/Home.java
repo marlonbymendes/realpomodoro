@@ -21,6 +21,10 @@ public class Home {
 	
 	PomodoroTimer pomodoroTimer;
 	
+	private final String HOME_TITLE = "RealPomodoro";
+	public static final int HOME_X_SIZE = 350;
+	public static final int HOME_Y_SIZE = 450;
+	
 	public Home() {
 		setTimePad();
 		setPomodoroTimer();
@@ -43,8 +47,8 @@ public class Home {
 	}
 	
 	private void setHomeFrame() {
-		home = new JFrame("Home");
-		home.setSize(350, 450);
+		home = new JFrame(HOME_TITLE);
+		home.setSize(HOME_X_SIZE, HOME_Y_SIZE);
 		home.setLayout(new BoxLayout(home.getContentPane(), BoxLayout.PAGE_AXIS));
 		home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		home.getRootPane().setDefaultButton(startButton);

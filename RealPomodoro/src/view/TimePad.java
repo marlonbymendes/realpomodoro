@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.BoxLayout;
@@ -11,7 +12,8 @@ import pomodoro.PomodoroConstants;
 public class TimePad extends JPanel {
 
 	JLabel twoPoints;
-	JLabel timeDigits[];
+	JLabel minutesLabel;
+	JLabel secondsLabel;
 	
 	final int SECONDS_START = 2;
 	final int MINUTES_START = 0;
@@ -30,69 +32,55 @@ public class TimePad extends JPanel {
 		addAllDigits();
 	}
 	
-	private void updateTime(final int index, final int time) {
-		final int firstDigit = time / 10;
-		updateTimeDigit(index, firstDigit);
-		
-		final int secondDigit = time % 10;
-		updateTimeDigit(index + 1, secondDigit);
-		
-	}
-	
 	public void updateSeconds(final int seconds) {
-		updateTime(SECONDS_START, seconds);
+		updateTextNumber(secondsLabel, seconds);
 	}
 	
 	public void updateMinutes(final int minutes) {
-		updateTime(MINUTES_START, minutes);
+		updateTextNumber(minutesLabel, minutes);
+	}
+	
+	private void updateTextNumber(JLabel label, final Integer newText) {
+		final String newTextString = String.format("%02d", newText);
+		label.setText(newTextString);
 	}
 	
 	private void initTimeDigits() {
-		final int TIME_DIGITS_SIZE = 4;
-		timeDigits = new JLabel[TIME_DIGITS_SIZE];
-		
-		for(int i = 0; i < timeDigits.length; ++i) {
-			timeDigits[i] = new JLabel();
-			
-			final Font digitFont = new Font(FontConstants.APP_FONT_NAME,
-											FontConstants.APP_FONT_STYLE, FontConstants.APP_FONT_SIZE);
-			timeDigits[i].setFont(digitFont);
-			timeDigits[i].setForeground(AppColors.TIME_PAD_DIGITS);
-		}
+		final String ZERO_ZERO = "00";
+		minutesLabel = createDigitLabel(ZERO_ZERO);
+		secondsLabel = createDigitLabel(ZERO_ZERO);
 	}
 	
-	private void updateTimeDigit(final int index, final int digit) {
-		final String digitString = Integer.toString(digit);
-		timeDigits[index].setText(digitString);
+	private JLabel createDigitLabel(final String text) {
+		JLabel digitLabel = new JLabel();
+		
+		final Font digitFont = new Font(FontConstants.APP_FONT_NAME,
+				FontConstants.APP_FONT_STYLE, FontConstants.APP_FONT_SIZE);
+		digitLabel.setFont(digitFont);
+		digitLabel.setForeground(AppColors.TIME_PAD_DIGITS);
+		digitLabel.setText(text);
+		
+		return digitLabel;
 	}
 	
 	private void initDigits() {
 		initTimeDigits();
 		updateSeconds(PomodoroConstants.DEFAULT_SECONDS);
 		updateMinutes(PomodoroConstants.DEFAULT_MINUTES);
+		
 		setTwoPointsLabel();
 	}
 	
 	private void setTwoPointsLabel() {
 		final String TWO_POINTS = ":";
-		twoPoints = new JLabel(TWO_POINTS);
-		twoPoints.setFont(new Font("Courier New", Font.PLAIN, 100));
-		twoPoints.setForeground(AppColors.TIME_PAD_DIGITS);
+		twoPoints = createDigitLabel(TWO_POINTS);
 	}
 	
 	private void addAllDigits() {
 		initDigits();
-		
-		final int MINUTES_ENDING = 2;
-		for(int i = MINUTES_START; i < MINUTES_ENDING; ++i) {
-			add(timeDigits[i]);
-		}
-		
+	
+		add(minutesLabel);
 		add(twoPoints);
-		
-		final int SECONDS_ENDING = 4;
-		for(int i = SECONDS_START; i < SECONDS_ENDING; ++i) {
-			add(timeDigits[i]);
-		}
+		add(secondsLabel);
 	}
 }

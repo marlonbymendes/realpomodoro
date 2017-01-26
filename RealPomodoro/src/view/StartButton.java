@@ -26,8 +26,12 @@ public class StartButton extends JButton {
 		setFocusPainted(false);
 		setContentAreaFilled(false);
 		setOpaque(true);
-		setMinimumSize(new Dimension(300, 25));
-		setMaximumSize(new Dimension(300, 25));
+		
+		final int BUTTON_Y_DIMENSION = 40;
+		final Dimension buttonDimension = new Dimension(Home.HOME_X_SIZE, BUTTON_Y_DIMENSION);
+		
+		setMinimumSize(buttonDimension);
+		setMaximumSize(buttonDimension);
 		
 		addActionListener(new StartButtonListener());
 		setStartButtonStyle();
