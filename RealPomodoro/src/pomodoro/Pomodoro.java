@@ -77,5 +77,4 @@ public class Pomodoro {
 	private void setInitialSeconds(final Integer seconds) {
 		this.currentSeconds = seconds;
 	}
-	
 }
