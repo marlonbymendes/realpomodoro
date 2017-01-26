@@ -59,7 +59,7 @@ public class TimePad extends JPanel {
 		JLabel digitLabel = new JLabel();
 		
 		final Font digitFont = new Font(FontConstants.APP_FONT_NAME,
-				FontConstants.APP_FONT_STYLE, FontConstants.APP_FONT_SIZE);
+				FontConstants.APP_FONT_STYLE, FontConstants.TIMEPAD_DIGIT_SIZE);
 		digitLabel.setFont(digitFont);
 		digitLabel.setForeground(AppColors.TIME_PAD_DIGITS);
 		digitLabel.setText(text);

@@ -58,17 +58,18 @@ public class Home {
 	
 	private void setHomeFrame() {
 		home = new JFrame(HOME_TITLE);
-		//home.setSize(HOME_X_SIZE, HOME_Y_SIZE);
 		home.setLayout(new BoxLayout(home.getContentPane(), BoxLayout.PAGE_AXIS));
 		home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		home.getRootPane().setDefaultButton(startButton);
 		
 		home.getContentPane().setBackground(AppColors.HOME_BACKGROUND);
 		setHomeBorder();
+		home.setResizable(false);
 	}
 	
 	private void addAllComponentsToHome() {
 		home.add(settingsButtonPanel);
+		addPad(1, 7);
 		home.add(timePad);
 		addPad(1, 125);
 		home.add(startButtonPanel);
