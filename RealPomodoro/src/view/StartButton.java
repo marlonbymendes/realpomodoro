@@ -17,8 +17,6 @@ public class StartButton extends JButton {
 	private final static String START_BUTTON_NAME = "S";
 	private final static String PAUSE_BUTTON_NAME = "P";
 	
-	private static final long serialVersionUID = -6839276097281926270L;
-	
 	public StartButton(final PomodoroTimer pomodoroTimer) {
 		super();
 		

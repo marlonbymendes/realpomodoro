@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import view.Home;
+import view.HomeCard;
 import view.TimePad;
 
 public class PomodoroTimer implements ActionListener {
@@ -17,7 +18,7 @@ public class PomodoroTimer implements ActionListener {
 	Timer stopWatch;
 	TimePad timePad;
 	
-	Home home;
+	HomeCard homeCard;
 	
 	public PomodoroTimer(final TimePad timePad) {
 		setCounting(false);
@@ -27,12 +28,12 @@ public class PomodoroTimer implements ActionListener {
 		setHome(null);
 	}
 	
-	public PomodoroTimer(final TimePad timePad, final Home home) {
+	public PomodoroTimer(final TimePad timePad, final HomeCard homeCard) {
 		setCounting(false);
 		setPomodoro();
 		setTimePad(timePad);
 		setStopWatch();
-		setHome(home);
+		setHome(homeCard);
 	}
 	
 	public void actionPerformed(ActionEvent event) {
@@ -50,8 +51,8 @@ public class PomodoroTimer implements ActionListener {
 		else if(counting && pomodoro.isOver()) {
 			stopWatch.stop();
 			setCounting(false);
-			if(home != null) {
-				home.pomodoroIsOver();
+			if(homeCard != null) {
+				homeCard.pomodoroIsOver();
 			}
 		}
 	}
@@ -87,8 +88,8 @@ public class PomodoroTimer implements ActionListener {
 		this.counting = counting;
 	}
 	
-	private void setHome(final Home home) {
-		this.home = home;
+	private void setHome(final HomeCard homeCard) {
+		this.homeCard = homeCard;
 	}
 	
 	public void restart() {

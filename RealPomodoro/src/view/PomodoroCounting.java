@@ -8,13 +8,12 @@ import javax.swing.JPanel;
 
 public class PomodoroCounting extends JPanel {
 	
-	private static final long serialVersionUID = -4932117620137377822L;
 	private Integer totalPomodoros;
 	
 	private JLabel countingText;
 	private JLabel countingNumber;
 	
-	private final String countingMessage = "Pomodoros in this session: ";
+	private final String COUNTING_MESSAGE = "Pomodoros in this session: ";
 	
 	public PomodoroCounting() {
 		super();
@@ -47,18 +46,20 @@ public class PomodoroCounting extends JPanel {
 	}
 	
 	private void initLabels() {
-		countingText = createStyledLabel();
-		countingText.setText(countingMessage);
+		final int COUNTING_TEXT_FONT_SIZE = 15;
+		countingText = createStyledLabel(COUNTING_TEXT_FONT_SIZE);
+		countingText .setText(COUNTING_MESSAGE);
 		
-		countingNumber = createStyledLabel();
+		final int COUNTING_NUMBER_FONT_SIZE = 17;
+		countingNumber = createStyledLabel(COUNTING_NUMBER_FONT_SIZE);
 	}
 	
-	private JLabel createStyledLabel() {
+	private JLabel createStyledLabel(final int fontSize) {
 		JLabel label = new JLabel();
 		label.setOpaque(true);
 		label.setBackground(AppColors.HOME_BACKGROUND);
 		final Font digitFont = new Font(FontConstants.APP_FONT_NAME,
-				FontConstants.APP_FONT_STYLE, 15);
+				FontConstants.APP_FONT_STYLE, fontSize);
 		label.setFont(digitFont);
 		label.setForeground(AppColors.TIME_PAD_DIGITS);
 		return label;

@@ -9,10 +9,12 @@ import javax.swing.JButton;
 
 public class SettingsButton extends JButton {
 	
+	private Home home;
 	
-	public SettingsButton() {
+	public SettingsButton(final Home home) {
 		super();
 		
+		setHome(home);
 		initButton();
 	}
 	
@@ -44,7 +46,11 @@ public class SettingsButton extends JButton {
 	private class SettingsButtonListener implements ActionListener {
 
 		public void actionPerformed(final ActionEvent event) {
-			System.out.println("Settings opened.");
+			home.showSettingsCard();
 		}
+	}
+	
+	private void setHome(final Home home) {
+		this.home = home;
 	}
 }

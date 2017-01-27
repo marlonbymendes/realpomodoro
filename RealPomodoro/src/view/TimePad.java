@@ -20,8 +20,6 @@ public class TimePad extends JPanel {
 	final int SECONDS_START = 2;
 	final int MINUTES_START = 0;
 	
-	private static final long serialVersionUID = -7368579241109062499L;
-	
 	public TimePad() {
 		super();
 		

@@ -15,17 +15,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		Home home = new Home();
-		home.show();
-		
-		final String fileName = "file_test.txt";
-		
-		  Main rp=new Main();  
-		  System.out.println("Reading file from resources folder");  
-		  System.out.println("-----------------------------");  
-		  
-		  rp.readFile(fileName);  
-		    
-		  System.out.println("-----------------------------");  
+		home.showHome();
 	}
 	
 	public  void readFile(String fileName) throws IOException  
