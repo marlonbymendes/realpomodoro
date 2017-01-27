@@ -8,6 +8,7 @@ import javax.swing.text.PlainDocument;
 
 public class IntegerTextField extends JTextField {
 	
+	private static final int MAXIMUM_NUMBER_OF_DIGITS = 2;
 	private PlainDocument IntegerDocumentFilter;
 
 	public IntegerTextField() {
@@ -22,15 +23,21 @@ public class IntegerTextField extends JTextField {
 		IntegerDocumentFilter.setDocumentFilter(new DocumentFilter() {
 		    @Override
 		    public void insertString(FilterBypass fb, int off, String str, AttributeSet attr) 
-		        throws BadLocationException 
-		    {
-		        fb.insertString(off, str.replaceAll("\\D++", ""), attr);  // remove non-digits
+		    		throws BadLocationException {
+		    	if(str == null) return;
+		    			 
+		    	final int newSize = IntegerDocumentFilter.getLength() + str.length();
+		    	
+		    	if(newSize <= MAXIMUM_NUMBER_OF_DIGITS)
+		    		fb.insertString(off, str.replaceAll("\\D++", ""), attr);  // remove non-digits
 		    } 
 		    @Override
 		    public void replace(FilterBypass fb, int off, int len, String str, AttributeSet attr) 
 		        throws BadLocationException 
 		    {
-		        fb.replace(off, len, str.replaceAll("\\D++", ""), attr);  // remove non-digits
+		    	final int newSize = IntegerDocumentFilter.getLength() + str.length();
+		    	if(newSize <= MAXIMUM_NUMBER_OF_DIGITS)
+		    		fb.replace(off, len, str.replaceAll("\\D++", ""), attr);  // remove non-digits
 		    }
 		});
 		
