@@ -14,6 +14,8 @@ public class IntegerTextField extends JTextField {
 	public IntegerTextField() {
 		super();
 		
+		setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		setColumns(MAXIMUM_NUMBER_OF_DIGITS);
 		setIntegerDocumentFilter();
 	}
 	
