@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -8,7 +7,6 @@ import java.awt.Font;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,6 +16,8 @@ import input_validation.IntegerTextField;
 import pomodoro.PomodoroConstants;
 
 public class SettingsCard extends JPanel {
+	
+	private	Home home;
 	
 	IntegerTextField minutesText;
 	IntegerTextField secondsText;
@@ -36,15 +36,16 @@ public class SettingsCard extends JPanel {
 	
 	private JPanel doneButtonPanel;
 	
-	public SettingsCard() {
+	public SettingsCard(final Home home) {
 		super();
+		setHome(home);
 		
 		setSettingsCard();
 		
 		setPomodoroMessage();
 		setInputPanels();
 		setTimePanel();
-		setDoneButton();
+		setDoneButtonPanel();
 		
 		addAllComponents();	
 	}
@@ -159,23 +160,23 @@ public class SettingsCard extends JPanel {
 		add(Box.createHorizontalGlue());
 	}
 	
-	private void setDoneButton() {
+	private void setDoneButtonPanel() {
 	
 		
 		doneButtonPanel = new JPanel();
 		doneButtonPanel.setLayout(new BoxLayout(doneButtonPanel, BoxLayout.LINE_AXIS));
 		doneButtonPanel.setBackground(AppColors.HOME_BACKGROUND);
 		
-		JButton doneButton = new JButton("DONE");
-		doneButton.setFont(pomodoroMessageLabel.getFont());
-		StyledViewFactory.setButtonStyle(doneButton);
-		doneButton.setBackground(AppColors.APP_GREEN);
-		
-		doneButtonPanel.add(doneButton);
+		SettingsDoneButton settingsDoneButton = new SettingsDoneButton(home);
+		doneButtonPanel.add(settingsDoneButton);
 	}
 	
 	private void forcePanelSize(JPanel panel, final Dimension dimension) {
 		panel.setMinimumSize(dimension);
 		panel.setMaximumSize(dimension);
+	}
+	
+	private void setHome(final Home home) {
+		this.home = home;
 	}
 }

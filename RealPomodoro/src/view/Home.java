@@ -55,12 +55,18 @@ public class Home extends JFrame {
 	}
 
 	private void setSettingsCard() {
-		settingsCard = new SettingsCard();
+		settingsCard = new SettingsCard(this);
 	}
 	
 	public void showSettingsCard() {
 		 CardLayout cardLayout = (CardLayout) getContentPane().getLayout();
 		 cardLayout.show(getContentPane(), SETTINGS_CARD);
 		 settingsCard.setFocusInMinutesText();
+	}
+	
+	public void showHomeCard() {
+		 System.out.println("Home card opened.");
+		 CardLayout cardLayout = (CardLayout) getContentPane().getLayout();
+		 cardLayout.show(getContentPane(),  HOME_TITLE);
 	}
 }
