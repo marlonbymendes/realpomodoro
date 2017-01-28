@@ -19,7 +19,6 @@ public class StartButton extends JButton {
 	
 	public StartButton(final PomodoroTimer pomodoroTimer) {
 		super();
-		
 		initButton();
 		setPomodoroTimer(pomodoroTimer);
 	}
@@ -80,17 +79,7 @@ public class StartButton extends JButton {
 	}
 	
 	private void initButton() {
-		setBorderPainted(false);
-		setFocusPainted(false);
-		setContentAreaFilled(false);
-		setOpaque(true);
-		
-		final int BUTTON_X_DIMENSION = (int) (Home.HOME_X_SIZE * 0.90);
-		final int BUTTON_Y_DIMENSION = 40;
-		final Dimension buttonDimension = new Dimension(BUTTON_X_DIMENSION, BUTTON_Y_DIMENSION);
-		setMinimumSize(buttonDimension);
-		setMaximumSize(buttonDimension);
-		
+		StyledViewFactory.setButtonStyle(this);
 		addActionListener(new StartButtonListener());
 		setStartButtonStyle();
 	}

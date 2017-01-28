@@ -61,5 +61,6 @@ public class Home extends JFrame {
 	public void showSettingsCard() {
 		 CardLayout cardLayout = (CardLayout) getContentPane().getLayout();
 		 cardLayout.show(getContentPane(), SETTINGS_CARD);
+		 settingsCard.setFocusInMinutesText();
 	}
 }

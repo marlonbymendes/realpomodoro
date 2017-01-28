@@ -29,7 +29,7 @@ public class TimePad extends JPanel {
 		setBackground(AppColors.HOME_BACKGROUND);
 		setOpaque(true);
 		
-		setTimePadBorder();
+		StyledViewFactory.setTimePadBorder(this);
 		
 		addAllDigits();
 	}
@@ -84,10 +84,5 @@ public class TimePad extends JPanel {
 		add(minutesLabel);
 		add(twoPoints);
 		add(secondsLabel);
-	}
-	
-	private void setTimePadBorder() {
-		Border border = BorderFactory.createLineBorder(Color.WHITE, 1);
-		setBorder(border);
 	}
 }

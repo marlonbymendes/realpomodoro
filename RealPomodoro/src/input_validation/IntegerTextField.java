@@ -1,5 +1,7 @@
 package input_validation;
 
+import java.awt.Color;
+
 import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -8,7 +10,7 @@ import javax.swing.text.PlainDocument;
 
 public class IntegerTextField extends JTextField {
 	
-	private static final int MAXIMUM_NUMBER_OF_DIGITS = 2;
+	public static final int MAXIMUM_NUMBER_OF_DIGITS = 2;
 	private PlainDocument IntegerDocumentFilter;
 
 	public IntegerTextField() {
@@ -17,6 +19,7 @@ public class IntegerTextField extends JTextField {
 		setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		setColumns(MAXIMUM_NUMBER_OF_DIGITS);
 		setIntegerDocumentFilter();
+		setCaretColor(Color.WHITE);
 	}
 	
 	private void setIntegerDocumentFilter() {
