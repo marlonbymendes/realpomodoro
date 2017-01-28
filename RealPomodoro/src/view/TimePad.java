@@ -1,13 +1,12 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 import pomodoro.PomodoroConstants;
 
@@ -30,6 +29,7 @@ public class TimePad extends JPanel {
 		setOpaque(true);
 		
 		StyledViewFactory.setTimePadBorder(this);
+		StyledViewFactory.forcePanelSize(this, SettingsCard.TIME_PANEL_DIMENSION);
 		
 		addAllDigits();
 	}
@@ -61,6 +61,9 @@ public class TimePad extends JPanel {
 		digitLabel.setFont(digitFont);
 		digitLabel.setForeground(AppColors.TIME_PAD_DIGITS);
 		digitLabel.setText(text);
+		digitLabel.setBackground(AppColors.HOME_BACKGROUND);
+		digitLabel.setOpaque(true);
+		digitLabel.setPreferredSize(new Dimension(0, SettingsCard.INPUT_Y_SIZE + 8));
 		
 		return digitLabel;
 	}

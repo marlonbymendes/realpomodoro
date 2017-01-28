@@ -31,10 +31,12 @@ public class SettingsCard extends JPanel {
 	private JPanel timePanel;
 	private Component bottonPad;
 	
-	final int INPUT_X_SIZE = 124;
-	final int INPUT_Y_SIZE = 87;
+	public static final int INPUT_X_SIZE = 124;
+	public static final int INPUT_Y_SIZE = 87;
 	
 	private JPanel doneButtonPanel;
+	
+	public static final Dimension TIME_PANEL_DIMENSION = new Dimension(Home.HOME_X_SIZE, INPUT_Y_SIZE + 10);
 	
 	public SettingsCard(final Home home) {
 		super();
@@ -58,40 +60,41 @@ public class SettingsCard extends JPanel {
 	private void setSettingsCard() {
 		setBackground(AppColors.HOME_BACKGROUND);
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		forcePanelSize(this, new Dimension(Home.HOME_X_SIZE, Home.HOME_Y_SIZE));
+		StyledViewFactory.forcePanelSize(this, new Dimension(Home.HOME_X_SIZE, Home.HOME_Y_SIZE));
 	}
 	
 	private void setTimeInput() {
 		minutesText = createStyledIntegerTextField(PomodoroConstants.DEFAULT_MINUTES);
-		minutesText.setBackground(AppColors.HOME_BACKGROUND);
+		minutesText.setBackground(AppColors.DARK_GRAY);
 		
 		secondsText = createStyledIntegerTextField(PomodoroConstants.DEFAULT_SECONDS);
-		secondsText.setBackground(AppColors.HOME_BACKGROUND);
+		secondsText.setBackground(AppColors.DARK_GRAY);
 	}
 	
 	private void setInputPanels() {
 		setTimeInput();
 		
 		minutesInputPanel = createInputPanel(minutesText);
-		minutesInputPanel.setBackground(AppColors.HOME_BACKGROUND);
+		minutesInputPanel.setBackground(AppColors.DARK_GRAY);
 		minutesInputPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		
 		secondsInputPanel = createInputPanel(secondsText);
-		secondsInputPanel.setBackground(AppColors.HOME_BACKGROUND);
+		secondsInputPanel.setBackground(AppColors.DARK_GRAY);
 		secondsInputPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 	}
 	
 	private void setTimePanel() {
 		timePanel = new JPanel();
 		timePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		timePanel.setBackground(AppColors.HOME_BACKGROUND);
-		final Dimension TIME_PANEL_DIMENSION = new Dimension(Home.HOME_X_SIZE, INPUT_Y_SIZE + 10);
-		forcePanelSize(timePanel, TIME_PANEL_DIMENSION);
+		timePanel.setBackground(AppColors.DARK_GRAY);
+		
+		StyledViewFactory.forcePanelSize(timePanel, TIME_PANEL_DIMENSION);
 		
 		StyledViewFactory.setTimePadBorder(timePanel);
 		
 		timePanel.add(minutesInputPanel);
 		JLabel twoPoints = StyledViewFactory.createStyledLabel(":", 100);
+		twoPoints.setBackground(AppColors.DARK_GRAY);
 		twoPoints.setPreferredSize(new Dimension(35, INPUT_Y_SIZE));
 		timePanel.add(twoPoints);
 		timePanel.add(secondsInputPanel);
@@ -112,7 +115,7 @@ public class SettingsCard extends JPanel {
 		
 		final String POMODORO_MESSAGE = "Pomodoro time:";
 		pomodoroMessageLabel.setText(POMODORO_MESSAGE);
-		pomodoroMessageLabel.setAlignmentX(pomodoroMessageLabel.LEFT_ALIGNMENT);
+		pomodoroMessageLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		
 		pomodoroMessage = new JPanel();
 		pomodoroMessage.setLayout(new BoxLayout(pomodoroMessage, BoxLayout.X_AXIS));
@@ -121,7 +124,7 @@ public class SettingsCard extends JPanel {
 		pomodoroMessage.add(pomodoroMessageLabel);
 		
 		final Dimension POMODORO_MESSAGE_DIMENSION = new Dimension(Home.HOME_X_SIZE, 35);
-		forcePanelSize(pomodoroMessage, POMODORO_MESSAGE_DIMENSION);
+		StyledViewFactory.forcePanelSize(pomodoroMessage, POMODORO_MESSAGE_DIMENSION);
 	}
 	
 	private void addAllComponents() {
@@ -139,14 +142,14 @@ public class SettingsCard extends JPanel {
 				FontConstants.APP_FONT_STYLE, DIGIT_INPUT_SIZE);
 		
 		component.setFont(digitFont);
-		component.setBackground(AppColors.HOME_BACKGROUND);
+		component.setBackground(AppColors.DARK_GRAY);
 		component.setForeground(AppColors.TIME_PAD_DIGITS);
 	}
 	
 	private JPanel createInputPanel(final JTextField textField) {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-		panel.setBackground(AppColors.HOME_BACKGROUND);
+		panel.setBackground(AppColors.DARK_GRAY);
 
 		panel.add(textField);
 		panel.setPreferredSize(new Dimension(INPUT_X_SIZE, INPUT_Y_SIZE));
@@ -154,7 +157,7 @@ public class SettingsCard extends JPanel {
 	}
 	
 	private void addBottonPad() {
-		final Dimension BOTTON_PAD_SIZE = new Dimension(150, 234);
+		final Dimension BOTTON_PAD_SIZE = new Dimension(150, 225);
 		bottonPad = Box.createRigidArea(BOTTON_PAD_SIZE);
 		add(bottonPad);
 		add(Box.createHorizontalGlue());
@@ -169,11 +172,6 @@ public class SettingsCard extends JPanel {
 		
 		SettingsDoneButton settingsDoneButton = new SettingsDoneButton(home);
 		doneButtonPanel.add(settingsDoneButton);
-	}
-	
-	private void forcePanelSize(JPanel panel, final Dimension dimension) {
-		panel.setMinimumSize(dimension);
-		panel.setMaximumSize(dimension);
 	}
 	
 	private void setHome(final Home home) {

@@ -47,4 +47,9 @@ public class StyledViewFactory {
 		button.setMinimumSize(buttonDimension);
 		button.setMaximumSize(buttonDimension);
 	}
+	
+	final static void forcePanelSize(JPanel panel, final Dimension dimension) {
+		panel.setMinimumSize(dimension);
+		panel.setMaximumSize(dimension);
+	}
 }

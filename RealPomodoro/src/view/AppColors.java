@@ -14,9 +14,10 @@ public class AppColors {
 	
 	final static Color APP_GREEN = Color.decode("#2ecc71");
 	final static Color APP_RED = Color.decode("#e74c3c");
+	public static final Color DARK_GRAY = Color.decode("#37474F");
 	
 	public AppColors() {
-		
+			
 	}
 	
 	public ImageIcon createIconFromResources(final String fileName) throws IOException {

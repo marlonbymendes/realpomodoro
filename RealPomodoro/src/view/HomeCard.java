@@ -48,7 +48,7 @@ public class HomeCard extends JPanel {
 	
 	private void addAllComponentsToHomeCard() {
 		add(settingsButtonPanel);
-		addPad(1, 7);
+		addPad(1, 5);
 		add(timePad);
 		addPad(1, 200);
 		add(startButtonPanel);
