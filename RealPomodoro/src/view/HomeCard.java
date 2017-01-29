@@ -48,11 +48,11 @@ public class HomeCard extends JPanel {
 	
 	private void addAllComponentsToHomeCard() {
 		add(settingsButtonPanel);
-		addPad(1, 5);
+		StyledViewFactory.addPad(this, 1, 5);
 		add(timePad);
-		addPad(1, 200);
+		StyledViewFactory.addPad(this, 1, 200);
 		add(startButtonPanel);
-		addPad(1, 10);
+		StyledViewFactory.addPad(this, 1, 10);
 		add(pomodoroCounting);
 	}
 	
@@ -88,11 +88,7 @@ public class HomeCard extends JPanel {
 	private void setStartButton(final PomodoroTimer pomodoroTime) {
 		startButton = new StartButton(pomodoroTime);
 	}
-	
-	private void addPad(final int width, final int height) {
-		add(Box.createRigidArea(new Dimension(width, height)));
-	}
-	
+
 	private void setTimePad() {
 		timePad = new TimePad();
 	}

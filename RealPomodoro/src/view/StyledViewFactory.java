@@ -5,19 +5,27 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 public class StyledViewFactory {
+	
+	public static int DEFAULT_FONT_SIZE = 15;
+	public static Font DEFAULT_FONT = new Font(FontConstants.APP_FONT_NAME,
+			FontConstants.APP_FONT_STYLE, DEFAULT_FONT_SIZE);
 
 	public static JLabel createStyledLabel(final int fontSize) {
 		JLabel label = new JLabel();
 		label.setOpaque(true);
 		label.setBackground(AppColors.HOME_BACKGROUND);
-		final Font digitFont = new Font(FontConstants.APP_FONT_NAME,
+		
+		Font digitFont = new Font(FontConstants.APP_FONT_NAME,
 				FontConstants.APP_FONT_STYLE, fontSize);
+		
 		label.setFont(digitFont);
 		label.setForeground(AppColors.TIME_PAD_DIGITS);
 		return label;
@@ -48,8 +56,13 @@ public class StyledViewFactory {
 		button.setMaximumSize(buttonDimension);
 	}
 	
-	final static void forcePanelSize(JPanel panel, final Dimension dimension) {
+	public static void forcePanelSize(JPanel panel, final Dimension dimension) {
 		panel.setMinimumSize(dimension);
 		panel.setMaximumSize(dimension);
+	}
+	
+	
+	public static void addPad(JComponent component, final int width, final int height) {
+		component.add(Box.createRigidArea(new Dimension(width, height)));
 	}
 }

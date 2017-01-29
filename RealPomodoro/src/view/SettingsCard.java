@@ -19,22 +19,23 @@ public class SettingsCard extends JPanel {
 	
 	private	Home home;
 	
-	IntegerTextField minutesText;
-	IntegerTextField secondsText;
+	private IntegerTextField minutesText;
+	private IntegerTextField secondsText;
 	
-	JPanel minutesInputPanel;
-	JPanel secondsInputPanel;
+	private JPanel minutesInputPanel;
+	private JPanel secondsInputPanel;
 	
-	JPanel pomodoroMessage;
-	JLabel pomodoroMessageLabel;
+	private JPanel pomodoroMessage;
+	private JLabel pomodoroMessageLabel;
 
 	private JPanel timePanel;
-	private Component bottonPad;
+	
+	private AutoRunPanel autoRunPanel;
+	
+	private JPanel doneButtonPanel;
 	
 	public static final int INPUT_X_SIZE = 124;
 	public static final int INPUT_Y_SIZE = 87;
-	
-	private JPanel doneButtonPanel;
 	
 	public static final Dimension TIME_PANEL_DIMENSION = new Dimension(Home.HOME_X_SIZE, INPUT_Y_SIZE + 10);
 	
@@ -47,6 +48,7 @@ public class SettingsCard extends JPanel {
 		setPomodoroMessage();
 		setInputPanels();
 		setTimePanel();
+		setAutoRunPanel();
 		setDoneButtonPanel();
 		
 		addAllComponents();	
@@ -127,12 +129,14 @@ public class SettingsCard extends JPanel {
 		StyledViewFactory.forcePanelSize(pomodoroMessage, POMODORO_MESSAGE_DIMENSION);
 	}
 	
-	private void addAllComponents() {
-		
-		
+	private void addAllComponents() {	
 		add(pomodoroMessage);
 		add(timePanel);
-		addBottonPad();
+		
+		StyledViewFactory.addPad(this, 0, 40);
+		add(autoRunPanel);
+		
+		StyledViewFactory.addPad(this, 0, 134);
 		add(doneButtonPanel);
 	}
 	
@@ -156,13 +160,6 @@ public class SettingsCard extends JPanel {
 		return panel;
 	}
 	
-	private void addBottonPad() {
-		final Dimension BOTTON_PAD_SIZE = new Dimension(150, 201);
-		bottonPad = Box.createRigidArea(BOTTON_PAD_SIZE);
-		add(bottonPad);
-		add(Box.createHorizontalGlue());
-	}
-	
 	private void setDoneButtonPanel() {
 	
 		
@@ -172,6 +169,10 @@ public class SettingsCard extends JPanel {
 		
 		SettingsDoneButton settingsDoneButton = new SettingsDoneButton(home);
 		doneButtonPanel.add(settingsDoneButton);
+	}
+	
+	private void setAutoRunPanel() {
+		autoRunPanel = new AutoRunPanel();
 	}
 	
 	private void setHome(final Home home) {
