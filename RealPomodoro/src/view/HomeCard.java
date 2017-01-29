@@ -74,10 +74,17 @@ public class HomeCard extends JPanel {
 	}
 	
 	public void pomodoroIsOver() {
-		home.toFront();
-		startButton.setStartButtonStyle();
 		pomodoroCounting.update();
-		JOptionPane.showMessageDialog(null, "Pomodoro is over.");
+
+		final boolean isAutoRunEnabled = home.isAutoRunEnabled();
+		if(!isAutoRunEnabled) {
+			startButton.setStartButtonStyle();
+			home.toFront();
+			JOptionPane.showMessageDialog(null, "Pomodoro is over.");
+		}
+		else {
+			pomodoroTimer.play();
+		}
 	}
 
 	private void setPomodoroTimer() {

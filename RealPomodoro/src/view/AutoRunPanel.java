@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -38,6 +37,10 @@ public class AutoRunPanel extends JPanel {
 		this.setBackground(AppColors.HOME_BACKGROUND);
 		
 		StyledViewFactory.forcePanelSize(this, PANEL_DIMENSION);
+	}
+	
+	public boolean isAutoRunEnabled() {
+		return autoRunCheckBox.isSelected();
 	}
 }
 

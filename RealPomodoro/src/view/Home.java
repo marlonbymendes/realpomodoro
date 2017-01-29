@@ -69,4 +69,8 @@ public class Home extends JFrame {
 		 CardLayout cardLayout = (CardLayout) getContentPane().getLayout();
 		 cardLayout.show(getContentPane(),  HOME_TITLE);
 	}
+	
+	public boolean isAutoRunEnabled() {
+		return settingsCard.isAutoRunEnabled();
+	}
 }

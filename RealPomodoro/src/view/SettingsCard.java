@@ -171,6 +171,10 @@ public class SettingsCard extends JPanel {
 		doneButtonPanel.add(settingsDoneButton);
 	}
 	
+	public boolean isAutoRunEnabled() {
+		return autoRunPanel.isAutoRunEnabled();
+	}
+	
 	private void setAutoRunPanel() {
 		autoRunPanel = new AutoRunPanel();
 	}
