@@ -157,7 +157,7 @@ public class SettingsCard extends JPanel {
 	}
 	
 	private void addBottonPad() {
-		final Dimension BOTTON_PAD_SIZE = new Dimension(150, 225);
+		final Dimension BOTTON_PAD_SIZE = new Dimension(150, 201);
 		bottonPad = Box.createRigidArea(BOTTON_PAD_SIZE);
 		add(bottonPad);
 		add(Box.createHorizontalGlue());

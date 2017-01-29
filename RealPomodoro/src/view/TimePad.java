@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
@@ -19,6 +18,9 @@ public class TimePad extends JPanel {
 	final int SECONDS_START = 2;
 	final int MINUTES_START = 0;
 	
+	final int TIME_PAD_X_SIZE = Home.HOME_X_SIZE - 57;
+	final int TIME_PAD_Y_SIZE = SettingsCard.INPUT_Y_SIZE + 10;
+	
 	public TimePad() {
 		super();
 		
@@ -29,7 +31,9 @@ public class TimePad extends JPanel {
 		setOpaque(true);
 		
 		StyledViewFactory.setTimePadBorder(this);
-		StyledViewFactory.forcePanelSize(this, SettingsCard.TIME_PANEL_DIMENSION);
+		
+		Dimension TIME_PAD_DIMENSION = new Dimension(TIME_PAD_X_SIZE, TIME_PAD_Y_SIZE);
+		StyledViewFactory.forcePanelSize(this, TIME_PAD_DIMENSION);
 		
 		addAllDigits();
 	}
