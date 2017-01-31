@@ -59,6 +59,7 @@ public class StyledViewFactory {
 	public static void forcePanelSize(JPanel panel, final Dimension dimension) {
 		panel.setMinimumSize(dimension);
 		panel.setMaximumSize(dimension);
+		panel.setPreferredSize(dimension);
 	}
 	
 	

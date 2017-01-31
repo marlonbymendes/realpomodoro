@@ -1,6 +1,7 @@
 package input_validation;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
@@ -8,6 +9,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
 
+import view.FontConstants;
 import view.StyledViewFactory;
 
 public class IntegerTextField extends JTextField {
@@ -18,10 +20,18 @@ public class IntegerTextField extends JTextField {
 	public IntegerTextField() {
 		super();
 		
-		setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		setColumns(MAXIMUM_NUMBER_OF_DIGITS);
-		setIntegerDocumentFilter();
-		setCaretColor(Color.WHITE);
+		setFontStyle();
+		setStyle();
+		
+
+	}
+	
+	private void setStyle() {
+		this.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		this.setColumns(MAXIMUM_NUMBER_OF_DIGITS);
+		this.setIntegerDocumentFilter();
+		this.setCaretColor(Color.WHITE);
+		this.setBackground(Color.yellow);
 	}
 	
 	private void setIntegerDocumentFilter() {
@@ -63,6 +73,18 @@ public class IntegerTextField extends JTextField {
 		}
 		
 		final String formattedText = StyledViewFactory.formatInteger(integerText);
+	
 		return formattedText;
+	}
+
+	public void setFormattedText() {
+		final String formattedText = getFormattedText();
+		this.setText(formattedText); 
+	}
+	
+	private void setFontStyle() {
+		final int FONT_SIZE = 22;
+		final Font font = new Font(FontConstants.APP_FONT_NAME, FontConstants.APP_FONT_STYLE, FONT_SIZE);
+		this.setFont(font);
 	}
 }

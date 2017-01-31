@@ -62,9 +62,8 @@ public class SettingsDoneButton extends JButton {
 	}
 	
 	private void updatePomodoroTimer() {
-		
-		int minutes = settingsCard.getSettingsMinutes();
-		int seconds = settingsCard.getSettingsSeconds();
+		int minutes = 77;
+		int seconds = 33;
 		
 		pomodoroTimer.updatePomodoroTime(minutes, seconds);
 	}

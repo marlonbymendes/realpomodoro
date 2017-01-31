@@ -23,7 +23,7 @@ public class TimePad extends JPanel {
 	
 	public TimePad() {
 		super();
-		
+		 
 		setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 		setAlignmentX(JPanel.CENTER_ALIGNMENT);
 		

@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.BoxLayout;
@@ -69,12 +70,21 @@ public class HomeCard extends JPanel {
 		startButtonPanel.add(startButton);
 		startButtonPanel.setBackground(AppColors.HOME_BACKGROUND);
 		startButtonPanel.setOpaque(true);
+		
+		final int PANEL_X_SIZE = (int) (Home.HOME_X_SIZE * 0.83);
+		final int PANEL_Y_SIZE = 35;
+		final Dimension START_PANEL_DIMENSION = new Dimension(PANEL_X_SIZE, PANEL_Y_SIZE);
+		
+		StyledViewFactory.forcePanelSize(startButtonPanel,  START_PANEL_DIMENSION);
 	}
 	
 	public void pomodoroIsOver() {
 		pomodoroCounting.update();
 
+		final boolean isAutoRunEnabled = false;
+		/*
 		final boolean isAutoRunEnabled = home.isAutoRunEnabled();
+		*/
 		if(!isAutoRunEnabled) {
 			startButton.setStartButtonStyle();
 			home.toFront();
