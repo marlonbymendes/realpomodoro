@@ -25,15 +25,13 @@ public class AutoRunCheckBox extends JCheckBox implements ItemListener {
 	}
 	
 	public void itemStateChanged(final ItemEvent event) {
-		System.out.println("Box was changed.");
-		
 		final int STATUS = event.getStateChange();
 		
         if(STATUS == ItemEvent.DESELECTED) {
-        	System.out.println("Box is now deselected.");
+        	System.out.println("AutoRun disabled.");
         }
         else {
-        	System.out.println("Box is now selected.");
+        	System.out.println("AutoRun enabled.");
         }
     }
 }

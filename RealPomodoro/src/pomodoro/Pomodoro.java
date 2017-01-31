@@ -66,7 +66,7 @@ public class Pomodoro {
 		return currentMinutes;
 	}
 
-	private void setInitialMinutes(final Integer minutes) {
+	public void setInitialMinutes(final Integer minutes) {
 		this.currentMinutes = minutes;
 	}
 
@@ -74,7 +74,7 @@ public class Pomodoro {
 		return currentSeconds;
 	}
 
-	private void setInitialSeconds(final Integer seconds) {
+	public void setInitialSeconds(final Integer seconds) {
 		this.currentSeconds = seconds;
 	}
 }

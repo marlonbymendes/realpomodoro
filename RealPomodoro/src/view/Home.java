@@ -6,6 +6,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.border.Border;
 
+import pomodoro.PomodoroTimer;
+
 public class Home extends JFrame {
 
 	private SettingsCard settingsCard;
@@ -72,5 +74,13 @@ public class Home extends JFrame {
 	
 	public boolean isAutoRunEnabled() {
 		return settingsCard.isAutoRunEnabled();
+	}
+	
+	public PomodoroTimer getPomodoroTimer() {
+		return homeCard.getPomodoroTimer();
+	}
+	
+	public void setPomodoroTimer(final int minutes, final int seconds) {
+		homeCard.setPomodoroTimer(minutes, seconds);
 	}
 }

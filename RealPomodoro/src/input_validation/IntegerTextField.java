@@ -8,6 +8,8 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
 
+import view.StyledViewFactory;
+
 public class IntegerTextField extends JTextField {
 	
 	public static final int MAXIMUM_NUMBER_OF_DIGITS = 2;
@@ -47,5 +49,20 @@ public class IntegerTextField extends JTextField {
 		});
 		
 		setDocument(IntegerDocumentFilter);
+	}
+	
+	public String getFormattedText() {
+		final String currentText = this.getText();
+		Integer integerText = 0;
+		
+		if(currentText != null && !currentText.isEmpty()) {
+			integerText = new Integer(currentText);
+		}
+		else {
+			integerText = 0;
+		}
+		
+		final String formattedText = StyledViewFactory.formatInteger(integerText);
+		return formattedText;
 	}
 }

@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import view.Home;
 import view.HomeCard;
 import view.TimePad;
 
@@ -98,5 +97,13 @@ public class PomodoroTimer implements ActionListener {
 		stopWatch.restart();
 		timePad.updateMinutes(pomodoro.getMinutes());
 		timePad.updateSeconds(pomodoro.getSeconds());
+	}
+	
+	public void updatePomodoroTime(final int minutes, final int seconds) {
+		pomodoro.setInitialMinutes(minutes);
+		pomodoro.setInitialSeconds(seconds);
+		
+		timePad.updateMinutes(minutes);
+		timePad.updateSeconds(seconds);
 	}
 }

@@ -1,9 +1,7 @@
 package view;
 
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -91,6 +89,13 @@ public class HomeCard extends JPanel {
 		pomodoroTimer = new PomodoroTimer(timePad, this);
 	}
 	
+	public PomodoroTimer getPomodoroTimer() {
+		return pomodoroTimer;
+	}
+
+	public void setPomodoroTimer(final int minutes, final int seconds) {
+		
+	}
 	
 	private void setStartButton(final PomodoroTimer pomodoroTime) {
 		startButton = new StartButton(pomodoroTime);

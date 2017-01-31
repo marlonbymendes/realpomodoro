@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -56,7 +55,8 @@ public class SettingsCard extends JPanel {
 	
 	public void setFocusInMinutesText() {
 		minutesText.requestFocusInWindow();
-		minutesText.setCaretPosition(IntegerTextField.MAXIMUM_NUMBER_OF_DIGITS);
+		final int textSize = minutesText.getText().length();
+		minutesText.setCaretPosition(textSize);
 	}
 	
 	private void setSettingsCard() {
@@ -167,7 +167,7 @@ public class SettingsCard extends JPanel {
 		doneButtonPanel.setLayout(new BoxLayout(doneButtonPanel, BoxLayout.LINE_AXIS));
 		doneButtonPanel.setBackground(AppColors.HOME_BACKGROUND);
 		
-		SettingsDoneButton settingsDoneButton = new SettingsDoneButton(home);
+		SettingsDoneButton settingsDoneButton = new SettingsDoneButton(home, this);
 		doneButtonPanel.add(settingsDoneButton);
 	}
 	
@@ -181,5 +181,15 @@ public class SettingsCard extends JPanel {
 	
 	private void setHome(final Home home) {
 		this.home = home;
+	}
+	
+	public int getSettingsMinutes() {
+		Integer minutes = new Integer(minutesText.getFormattedText());
+		return minutes;
+	}
+	
+	public int getSettingsSeconds() {
+		Integer seconds = new Integer(secondsText.getFormattedText());
+		return seconds;
 	}
 }

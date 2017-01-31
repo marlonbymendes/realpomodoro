@@ -65,4 +65,9 @@ public class StyledViewFactory {
 	public static void addPad(JComponent component, final int width, final int height) {
 		component.add(Box.createRigidArea(new Dimension(width, height)));
 	}
+	
+	public static String formatInteger(final Integer integer) {
+		final String FORMAT = "%02d";
+		return String.format(FORMAT, integer);
+	}
 }

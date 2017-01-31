@@ -6,15 +6,23 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import pomodoro.PomodoroTimer;
+
 public class SettingsDoneButton extends JButton {
 	
 	private Home home;
+	private SettingsCard settingsCard;
+	PomodoroTimer pomodoroTimer;
 	
 	private static final String DONE_BUTTON_TEXT = "DONE";
 	
-	public SettingsDoneButton(final Home home) {
+	public SettingsDoneButton(final Home home, final SettingsCard settingsCard) {
 		super(DONE_BUTTON_TEXT);
+		
 		setHome(home);
+		setSettingsCard(settingsCard);
+		
+		setPomodoroTimer();
 		
 		setSettingsDoneButtonSyle();
 		addActionListener(new ButtonListener());
@@ -36,14 +44,28 @@ public class SettingsDoneButton extends JButton {
 	
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(final ActionEvent event) {
-			if(home == null) {
-				System.out.println("HOME IS NULL!");
-			}
+			updatePomodoroTimer();
 			home.showHomeCard();
 		}
 	}
 	
 	private void setHome(final Home home) {
 		this.home = home;
+	}
+	
+	private void setSettingsCard(final SettingsCard settingsCard) {
+		this.settingsCard = settingsCard;
+	}
+	
+	private void setPomodoroTimer() {
+		this.pomodoroTimer = home.getPomodoroTimer();
+	}
+	
+	private void updatePomodoroTimer() {
+		
+		int minutes = settingsCard.getSettingsMinutes();
+		int seconds = settingsCard.getSettingsSeconds();
+		
+		pomodoroTimer.updatePomodoroTime(minutes, seconds);
 	}
 }
