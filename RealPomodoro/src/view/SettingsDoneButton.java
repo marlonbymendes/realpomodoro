@@ -44,7 +44,12 @@ public class SettingsDoneButton extends JButton {
 	
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(final ActionEvent event) {
-			updatePomodoroTimer();
+			final boolean wasPomodoroUpdated = settingsCard.wasPomodoroUpdated();
+			if(wasPomodoroUpdated) {
+				updatePomodoroTimer();
+				settingsCard.setPomodoroUpdated(false);
+			}
+			
 			home.showHomeCard();
 		}
 	}
@@ -62,8 +67,8 @@ public class SettingsDoneButton extends JButton {
 	}
 	
 	private void updatePomodoroTimer() {
-		int minutes = 77;
-		int seconds = 33;
+		int minutes = settingsCard.getMinutes();
+		int seconds = settingsCard.getSeconds();
 		
 		pomodoroTimer.updatePomodoroTime(minutes, seconds);
 	}

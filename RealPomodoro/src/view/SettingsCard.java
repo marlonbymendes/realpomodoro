@@ -98,4 +98,22 @@ public class SettingsCard extends JPanel {
 		setMinutesInputPanel();
 		setSecondsInputPanel();
 	}
+	
+	public boolean wasPomodoroUpdated() {
+		boolean updated = minutesInputPanel.wasUpdated() || secondsInputPanel.wasUpdated();
+		return updated;
+	}
+	
+	public int getMinutes() {
+		return minutesInputPanel.getInteger();
+	}
+	
+	public int getSeconds() {
+		return secondsInputPanel.getInteger();
+	}
+
+	public void setPomodoroUpdated(final boolean status) {
+		minutesInputPanel.setUpdated(false);
+		secondsInputPanel.setUpdated(false);
+	}
 }

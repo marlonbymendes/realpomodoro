@@ -5,27 +5,31 @@ import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
 
+import javax.swing.event.DocumentListener;
+
 import view.AppColors;
 import view.FontConstants;
-import view.StyledViewFactory;
 
 public class IntegerTextField extends JTextField {
 	
 	public static final int MAXIMUM_NUMBER_OF_DIGITS = 2;
 	private PlainDocument IntegerDocumentFilter;
+	private boolean updated;
 
 	public IntegerTextField() {
 		super();
 		
 		setFontStyle();
 		setStyle();
+		setUpdated(false);
 		
-
+		this.getDocument().addDocumentListener(new FieldListener());
 	}
 	
 	private void setStyle() {
@@ -61,28 +65,24 @@ public class IntegerTextField extends JTextField {
 		    }
 		});
 		
-		setDocument(IntegerDocumentFilter);
+		this.setDocument(IntegerDocumentFilter);
 	}
 	
-	public String getFormattedText() {
-		final String currentText = this.getText();
-		Integer integerText = 0;
-		
-		if(currentText != null && !currentText.isEmpty()) {
-			integerText = new Integer(currentText);
-		}
-		else {
-			integerText = 0;
-		}
-		
-		final String formattedText = StyledViewFactory.formatInteger(integerText);
-	
-		return formattedText;
-	}
+	private class FieldListener implements DocumentListener {
+		@Override
+	    public void insertUpdate(DocumentEvent e) {
+	        setUpdated(true);
+	    }
 
-	public void setFormattedText() {
-		final String formattedText = getFormattedText();
-		this.setText(formattedText); 
+	    @Override
+	    public void removeUpdate(DocumentEvent e) {
+	    	setUpdated(true);
+	    }
+
+	    @Override
+	    public void changedUpdate(DocumentEvent e) {
+	    	setUpdated(true);
+	    }
 	}
 	
 	private void setFontStyle() {
@@ -91,5 +91,13 @@ public class IntegerTextField extends JTextField {
 		
 		this.setFont(font);
 		this.setForeground(AppColors.MID_GRAY);
+	}
+	
+	public void setUpdated(final boolean status) {
+		this.updated = status;
+	}
+	
+	public boolean wasUpdated() {
+		return updated;
 	}
 }

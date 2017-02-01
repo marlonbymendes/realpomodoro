@@ -90,4 +90,17 @@ public class IntegerInputPanel extends JPanel {
 		inputPanel.add(createRigidPanel());
 		inputPanel.add(integerInput);
 	}
+	
+	public boolean wasUpdated() {
+		return integerInput.wasUpdated();
+	}
+	
+	public int getInteger() {
+		final Integer integer = new Integer(integerInput.getText());
+		return integer;
+	}
+
+	public void setUpdated(final boolean status) {
+		integerInput.setUpdated(status);
+	}
 }
