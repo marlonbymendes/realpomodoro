@@ -18,7 +18,7 @@ public class StyledViewFactory {
 	public static Font DEFAULT_FONT = new Font(FontConstants.APP_FONT_NAME,
 			FontConstants.APP_FONT_STYLE, DEFAULT_FONT_SIZE);
 
-	public static JLabel createStyledLabel(final int fontSize) {
+	public static JLabel createStyledLabel(final String text, final int fontSize) {
 		JLabel label = new JLabel();
 		label.setOpaque(true);
 		label.setBackground(AppColors.HOME_BACKGROUND);
@@ -28,12 +28,8 @@ public class StyledViewFactory {
 		
 		label.setFont(digitFont);
 		label.setForeground(AppColors.TIME_PAD_DIGITS);
-		return label;
-	}
-	
-	public static JLabel createStyledLabel(final String text, final int fontSize) {
-		JLabel label = createStyledLabel(fontSize);
 		label.setText(text);
+		
 		return label;
 	}
 	

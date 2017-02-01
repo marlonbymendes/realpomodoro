@@ -54,14 +54,11 @@ public class SettingsCard extends JPanel {
 		add(minutesInputPanel);
 		add(secondsInputPanel);
 		
-		/*
-		
 		StyledViewFactory.addPad(this, 0, 40);
 		add(autoRunPanel);
 		
 		StyledViewFactory.addPad(this, 0, 134);
 		add(doneButtonPanel);
-		*/
 	}
 	
 	private void setDoneButtonPanel() {

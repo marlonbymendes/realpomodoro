@@ -46,10 +46,9 @@ public class PomodoroCounting extends JPanel {
 	
 	private void initLabels() {
 		final int COUNTING_TEXT_FONT_SIZE = 15;
-		countingText = StyledViewFactory.createStyledLabel(COUNTING_TEXT_FONT_SIZE);
-		countingText .setText(COUNTING_MESSAGE);
+		countingText = StyledViewFactory.createStyledLabel(COUNTING_MESSAGE, COUNTING_TEXT_FONT_SIZE);
 		
 		final int COUNTING_NUMBER_FONT_SIZE = 17;
-		countingNumber = StyledViewFactory.createStyledLabel(COUNTING_NUMBER_FONT_SIZE);
+		countingNumber = StyledViewFactory.createStyledLabel("", COUNTING_NUMBER_FONT_SIZE);
 	}
 }

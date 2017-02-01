@@ -3,6 +3,9 @@ package view;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class AutoRunPanel extends JPanel {
@@ -13,14 +16,22 @@ public class AutoRunPanel extends JPanel {
 	final Dimension PANEL_DIMENSION = new Dimension(PANEL_X_SIZE, PANEL_Y_SIZE);
 	
 	AutoRunCheckBox autoRunCheckBox;
+	private JPanel verticalPanel;
+	private JLabel autoRunLabel;
 	
 	public AutoRunPanel() {
 		super();
 		
 		setAutoRunCheckBox();
+		setAutoRunLabel();
 		setAutoRunPanel();
-		
-		this.add(autoRunCheckBox);
+		setVerticalPanel();
+	
+		addAllComponents();
+	}
+	
+	private void addAllComponents() {
+		this.add(verticalPanel);
 	}
 
 	private void setAutoRunCheckBox() {
@@ -29,18 +40,32 @@ public class AutoRunPanel extends JPanel {
 	
 	private void setAutoRunPanel() {
 		FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
-		flowLayout.setHgap(0);
 		flowLayout.setVgap(0);
-		
+		flowLayout.setHgap(0);
 		this.setLayout(flowLayout);
+		
 		this.setOpaque(true);
 		this.setBackground(AppColors.HOME_BACKGROUND);
-		
-		StyledViewFactory.forceComponentSize(this, PANEL_DIMENSION);
 	}
 	
 	public boolean isAutoRunEnabled() {
 		return autoRunCheckBox.isSelected();
+	}
+	
+	private void setAutoRunLabel() {
+		final String AUTO_RUN_TEXT = "AutoRun pomodoros";
+		final int fontSize = 17;
+		autoRunLabel = StyledViewFactory.createStyledLabel(AUTO_RUN_TEXT, fontSize);
+	}
+	
+	private void setVerticalPanel() {
+		verticalPanel = new JPanel();
+		verticalPanel.setLayout(new BoxLayout(verticalPanel, BoxLayout.Y_AXIS));
+		verticalPanel.setBackground(AppColors.HOME_BACKGROUND);
+		
+		verticalPanel.add(autoRunLabel);
+		verticalPanel.add(Box.createRigidArea(new Dimension(0, 7)));
+		verticalPanel.add(autoRunCheckBox);
 	}
 }
 

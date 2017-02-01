@@ -28,10 +28,8 @@ public class PomodoroMessage extends JPanel {
 	}
 	
 	private void setLabel() {
-		final int fontSize = 17;
-		pomodoroMessageLabel = StyledViewFactory.createStyledLabel(fontSize);
-		
 		final String POMODORO_MESSAGE = "Pomodoro time";
-		pomodoroMessageLabel.setText(POMODORO_MESSAGE);
+		final int fontSize = 17;
+		pomodoroMessageLabel = StyledViewFactory.createStyledLabel(POMODORO_MESSAGE, fontSize);
 	}
 }

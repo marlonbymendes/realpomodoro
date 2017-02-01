@@ -7,7 +7,7 @@ import javax.swing.JCheckBox;
 
 public class AutoRunCheckBox extends JCheckBox implements ItemListener {
 
-	private static final String LABEL = "Enable AutoRun";
+	private static final String LABEL = "Automatically restart pomodoro";
 	
 	public AutoRunCheckBox() {
 		super(LABEL);
