@@ -33,7 +33,7 @@ public class TimePad extends JPanel {
 		StyledViewFactory.setTimePadBorder(this);
 		
 		Dimension TIME_PAD_DIMENSION = new Dimension(TIME_PAD_X_SIZE, TIME_PAD_Y_SIZE);
-		StyledViewFactory.forcePanelSize(this, TIME_PAD_DIMENSION);
+		StyledViewFactory.forceComponentSize(this, TIME_PAD_DIMENSION);
 		
 		addAllDigits();
 	}

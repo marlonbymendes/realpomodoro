@@ -36,7 +36,7 @@ public class AutoRunPanel extends JPanel {
 		this.setOpaque(true);
 		this.setBackground(AppColors.HOME_BACKGROUND);
 		
-		StyledViewFactory.forcePanelSize(this, PANEL_DIMENSION);
+		StyledViewFactory.forceComponentSize(this, PANEL_DIMENSION);
 	}
 	
 	public boolean isAutoRunEnabled() {

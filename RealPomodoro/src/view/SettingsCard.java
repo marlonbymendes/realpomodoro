@@ -18,11 +18,10 @@ public class SettingsCard extends JPanel {
 	
 	private	Home home;
 	
+	private PomodoroMessage pomodoroMessage;
+	
 	private IntegerInputPanel minutesInputPanel;
 	private IntegerInputPanel secondsInputPanel;
-	
-	private JPanel pomodoroMessage;
-	private JLabel pomodoroMessageLabel;
 
 	private AutoRunPanel autoRunPanel;
 	
@@ -50,28 +49,16 @@ public class SettingsCard extends JPanel {
 	private void setSettingsCard() {
 		setBackground(AppColors.HOME_BACKGROUND);
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		StyledViewFactory.forcePanelSize(this, new Dimension(Home.HOME_X_SIZE, Home.HOME_Y_SIZE));
 	}
 	
 	private void setPomodoroMessage() {
-		pomodoroMessageLabel = StyledViewFactory.createStyledLabel(15);
-		
-		final String POMODORO_MESSAGE = "Pomodoro time:";
-		pomodoroMessageLabel.setText(POMODORO_MESSAGE);
-		pomodoroMessageLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		
-		pomodoroMessage = new JPanel();
-		pomodoroMessage.setLayout(new BoxLayout(pomodoroMessage, BoxLayout.X_AXIS));
-		pomodoroMessage.setBackground(AppColors.HOME_BACKGROUND);
-		
-		pomodoroMessage.add(pomodoroMessageLabel);
-		
-		final Dimension POMODORO_MESSAGE_DIMENSION = new Dimension(Home.HOME_X_SIZE, 35);
-		StyledViewFactory.forcePanelSize(pomodoroMessage, POMODORO_MESSAGE_DIMENSION);
+		pomodoroMessage = new PomodoroMessage();
 	}
 	
 	private void addAllComponents() {	
 		add(pomodoroMessage);
+		
+		/*
 		add(minutesInputPanel);
 		add(secondsInputPanel);
 		
@@ -80,6 +67,7 @@ public class SettingsCard extends JPanel {
 		
 		StyledViewFactory.addPad(this, 0, 134);
 		add(doneButtonPanel);
+		*/
 	}
 	
 	private void setDoneButtonPanel() {

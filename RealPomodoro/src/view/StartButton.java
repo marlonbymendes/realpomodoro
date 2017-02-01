@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +16,10 @@ public class StartButton extends JButton {
 	private final static String START_BUTTON_NAME = "S";
 	private final static String PAUSE_BUTTON_NAME = "P";
 	
+	public final static int X_SIZE = (int) (Home.HOME_X_SIZE * 0.83);
+	public final static int Y_SIZE = 35;
+	public final static Dimension BUTTON_DIMENSION = new Dimension(X_SIZE, Y_SIZE);
+	
 	public StartButton(final PomodoroTimer pomodoroTimer) {
 		super();
 		initButton();
@@ -22,8 +27,6 @@ public class StartButton extends JButton {
 	}
 	
 	private class StartButtonListener implements ActionListener {
-	
-
 		public void actionPerformed(final ActionEvent event) {
 			final String currentStatusText = getStatusText();
 			boolean startStatus = currentStatusText.equals(START_BUTTON_NAME);
@@ -55,6 +58,8 @@ public class StartButton extends JButton {
 		
 		final String playIconName = "pause.png";
 		setImageIcon(playIconName);
+		
+		StyledViewFactory.forceComponentSize(this, BUTTON_DIMENSION);
 	}
 	
 	private void setPomodoroTimer(final PomodoroTimer pomodoroTime) {

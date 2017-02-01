@@ -10,7 +10,7 @@ import pomodoro.PomodoroTimer;
 
 public class Home extends JFrame {
 
-	//private SettingsCard settingsCard;
+	private SettingsCard settingsCard;
 	private HomeCard homeCard;
 
 	private static final String HOME_TITLE = "RealPomodoro";
@@ -29,14 +29,10 @@ public class Home extends JFrame {
 		initHomeFrame();
 		setHomeBorder();
 		setHomeCard();
-		/*
 		setSettingsCard();
-		*/
 
 		add(homeCard, HOME_TITLE);
-		/*
 		add(settingsCard, SETTINGS_CARD);
-		*/
 	}
 
 	private void initHomeFrame() {
@@ -60,13 +56,10 @@ public class Home extends JFrame {
 		homeCard = new HomeCard(this);
 	}
 	
-	
-	/*
 	private void setSettingsCard() {
 		settingsCard = new SettingsCard(this);
 	}
-	*/
-	
+			
 	public void showSettingsCard() {
 		 CardLayout cardLayout = (CardLayout) getContentPane().getLayout();
 		 cardLayout.show(getContentPane(), SETTINGS_CARD);
@@ -77,11 +70,9 @@ public class Home extends JFrame {
 		 cardLayout.show(getContentPane(),  HOME_TITLE);
 	}
 	
-	/*
 	public boolean isAutoRunEnabled() {
 		return settingsCard.isAutoRunEnabled();
 	}
-	*/
 	
 	public PomodoroTimer getPomodoroTimer() {
 		return homeCard.getPomodoroTimer();

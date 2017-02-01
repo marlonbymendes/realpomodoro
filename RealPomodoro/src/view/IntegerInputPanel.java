@@ -37,7 +37,7 @@ public class IntegerInputPanel extends JPanel {
 		flowLayout.setHgap(0);
 		this.setLayout(flowLayout);
 		
-		StyledViewFactory.forcePanelSize(this, PANEL_DIMENSION);
+		StyledViewFactory.forceComponentSize(this, PANEL_DIMENSION);
 	}
 	
 	private void setLabel() {
