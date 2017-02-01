@@ -1,18 +1,11 @@
 package view;
 
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-
 import javax.swing.BoxLayout;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-import input_validation.IntegerTextField;
 import pomodoro.PomodoroConstants;
+
 
 public class SettingsCard extends JPanel {
 	
@@ -58,9 +51,10 @@ public class SettingsCard extends JPanel {
 	private void addAllComponents() {	
 		add(pomodoroMessage);
 		
-		/*
 		add(minutesInputPanel);
 		add(secondsInputPanel);
+		
+		/*
 		
 		StyledViewFactory.addPad(this, 0, 40);
 		add(autoRunPanel);
@@ -94,13 +88,13 @@ public class SettingsCard extends JPanel {
 	}
 	
 	private void setMinutesInputPanel() {
-		final String MINUTES_MESSAGE = "Minutes:";
-		minutesInputPanel = new IntegerInputPanel(MINUTES_MESSAGE);
+		final String MINUTES_MESSAGE = "Minutes: ";
+		minutesInputPanel = new IntegerInputPanel(MINUTES_MESSAGE, PomodoroConstants.DEFAULT_MINUTES);
 	}
 	
 	private void setSecondsInputPanel() {
 		final String SECONDS_MESSAGE = "Seconds:";
-		secondsInputPanel = new IntegerInputPanel(SECONDS_MESSAGE);
+		secondsInputPanel = new IntegerInputPanel(SECONDS_MESSAGE, PomodoroConstants.DEFAULT_SECONDS);
 	}
 	
 	private void setInputPanels() {

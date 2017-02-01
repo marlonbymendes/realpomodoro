@@ -11,10 +11,12 @@ public class AppColors {
 
 	final static Color HOME_BACKGROUND = Color.decode("#34495E");
 	final static Color TIME_PAD_DIGITS = Color.decode("#ECF0F1");
+	final static Color APP_GREEN = Color.decode("#2ECC71");
+	final static Color APP_RED = Color.decode("#E74C3C");
 	
-	final static Color APP_GREEN = Color.decode("#2ecc71");
-	final static Color APP_RED = Color.decode("#e74c3c");
-	public static final Color DARK_GRAY = Color.decode("#37474F");
+	public static final Color DARK_GRAY = Color.decode("#7f8c8d");
+	public static final Color LIGHT_GRAY = Color.decode("#ecf0f1");
+	public static final Color MID_GRAY = Color.decode("#4C5A69");
 	
 	public AppColors() {
 			

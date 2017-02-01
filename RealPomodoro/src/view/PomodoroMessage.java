@@ -21,15 +21,17 @@ public class PomodoroMessage extends JPanel {
 
 	private void setPomodoroMessage() {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-		setBackground(AppColors.APP_RED);
+		setBackground(AppColors.HOME_BACKGROUND);
 		
 		final Dimension POMODORO_MESSAGE_DIMENSION = StartButton.BUTTON_DIMENSION;
 		StyledViewFactory.forceComponentSize(this, POMODORO_MESSAGE_DIMENSION);
 	}
 	
 	private void setLabel() {
-		pomodoroMessageLabel = StyledViewFactory.createStyledLabel(15);
-		final String POMODORO_MESSAGE = "Pomodoro time:";
+		final int fontSize = 17;
+		pomodoroMessageLabel = StyledViewFactory.createStyledLabel(fontSize);
+		
+		final String POMODORO_MESSAGE = "Pomodoro time";
 		pomodoroMessageLabel.setText(POMODORO_MESSAGE);
 	}
 }

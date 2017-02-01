@@ -3,12 +3,14 @@ package input_validation;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
 
+import view.AppColors;
 import view.FontConstants;
 import view.StyledViewFactory;
 
@@ -27,11 +29,12 @@ public class IntegerTextField extends JTextField {
 	}
 	
 	private void setStyle() {
-		this.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		this.setColumns(MAXIMUM_NUMBER_OF_DIGITS);
 		this.setIntegerDocumentFilter();
-		this.setCaretColor(Color.WHITE);
-		this.setBackground(Color.yellow);
+		this.setCaretColor(Color.BLACK);
+		this.setBackground(AppColors.LIGHT_GRAY);
+		
+		this.setBorder(BorderFactory.createEmptyBorder());
 	}
 	
 	private void setIntegerDocumentFilter() {
@@ -83,8 +86,10 @@ public class IntegerTextField extends JTextField {
 	}
 	
 	private void setFontStyle() {
-		final int FONT_SIZE = 22;
+		final int FONT_SIZE = 20;
 		final Font font = new Font(FontConstants.APP_FONT_NAME, FontConstants.APP_FONT_STYLE, FONT_SIZE);
+		
 		this.setFont(font);
+		this.setForeground(AppColors.MID_GRAY);
 	}
 }
