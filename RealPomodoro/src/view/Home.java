@@ -81,4 +81,10 @@ public class Home extends JFrame {
 	public void setPomodoroTimer(final int minutes, final int seconds) {
 		homeCard.setPomodoroTimer(minutes, seconds);
 	}
+	
+	public boolean isPomodoroRunning() {
+		final PomodoroTimer pomodoroTimer = homeCard.getPomodoroTimer();
+		final boolean running = pomodoroTimer.getCounting();
+		return running;
+	}
 }

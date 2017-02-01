@@ -106,4 +106,8 @@ public class PomodoroTimer implements ActionListener {
 		timePad.updateMinutes(minutes);
 		timePad.updateSeconds(seconds);
 	}
+
+	public boolean getCounting() {
+		return counting;
+	}
 }

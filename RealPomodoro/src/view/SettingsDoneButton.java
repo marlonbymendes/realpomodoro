@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import pomodoro.PomodoroTimer;
 
@@ -46,7 +47,15 @@ public class SettingsDoneButton extends JButton {
 		public void actionPerformed(final ActionEvent event) {
 			final boolean wasPomodoroUpdated = settingsCard.wasPomodoroUpdated();
 			if(wasPomodoroUpdated) {
-				updatePomodoroTimer();
+				final boolean isPomodoroRunning = home.isPomodoroRunning();
+				
+				if(!isPomodoroRunning) {
+					updatePomodoroTimer();
+				}
+				else {
+					showPomodoroIsRunningMessage();
+				}
+				
 				settingsCard.setPomodoroUpdated(false);
 			}
 			
@@ -71,5 +80,13 @@ public class SettingsDoneButton extends JButton {
 		int seconds = settingsCard.getSeconds();
 		
 		pomodoroTimer.updatePomodoroTime(minutes, seconds);
+	}
+	
+	private void showPomodoroIsRunningMessage() {
+		
+		System.out.println("POMODOO IS RUNNING");
+		final String POMODORO_IS_RUNNING = "There is a pomodoro running.Do you want to update it's time anyways?";
+		
+		final int user_answer = JOptionPane.showConfirmDialog(null, POMODORO_IS_RUNNING, "Pomodoro is running", JOptionPane.YES_NO_OPTION);
 	}
 }
