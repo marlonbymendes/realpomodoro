@@ -11,10 +11,10 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
 
-import javax.swing.event.DocumentListener;
+import home_view.AppColors;
+import home_view.FontConstants;
 
-import view.AppColors;
-import view.FontConstants;
+import javax.swing.event.DocumentListener;
 
 public class IntegerTextField extends JTextField {
 	

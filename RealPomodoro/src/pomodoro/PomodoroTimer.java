@@ -5,64 +5,50 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import view.HomeCard;
-import view.TimePad;
+import home_card_view.HomeCard;
+import home_card_view.TimePad;
 
-public class PomodoroTimer implements ActionListener {
+public class PomodoroTimer extends Pomodoro
+						   implements ActionListener {
 
 	private int UPDATE_TIME = 1000; // 1000 ms = 1 s
 	
 	private boolean counting;
-	Pomodoro pomodoro;
 	Timer stopWatch;
 	TimePad timePad;
 	
 	HomeCard homeCard;
 	
-	public PomodoroTimer(final TimePad timePad) {
-		setCounting(false);
-		setPomodoro();
-		setTimePad(timePad);
-		setStopWatch();
-		setHome(null);
-	}
-	
 	public PomodoroTimer(final TimePad timePad, final HomeCard homeCard) {
+		super();
+		
 		setCounting(false);
-		setPomodoro();
 		setTimePad(timePad);
 		setStopWatch();
 		setHome(homeCard);
 	}
 	
 	public void actionPerformed(ActionEvent event) {
-		assert(pomodoro != null);
-		
-		if(counting && pomodoro.getTotalTime() > 0) {
-			pomodoro.update();
+		if(counting && this.getTotalTime() > 0) {
+			this.update();
 			
-			final int currentMinutes = pomodoro.getMinutes();
-			final int currentSeconds = pomodoro.getSeconds();
+			final int currentMinutes = this.getMinutes();
+			final int currentSeconds = this.getSeconds();
 			
-			timePad.updateMinutes(currentMinutes);
-			timePad.updateSeconds(currentSeconds);
+			timePad.update(currentMinutes, currentSeconds);
 		}
-		else if(counting && pomodoro.isOver()) {
-			stopWatch.stop();
-			setCounting(false);
+		else if(counting && this.isOver()) {
+			stop();
+			restartTimePad();
+			
 			if(homeCard != null) {
 				homeCard.pomodoroIsOver();
 			}
 		}
 	}
 	
-	private void setPomodoro() {
-		pomodoro = new Pomodoro();
-	}
-	
 	private void setStopWatch() {
 		stopWatch = new Timer(UPDATE_TIME, this);
-		stopWatch.start();
 	}
 	
 	private void setTimePad(final TimePad timePad) {
@@ -70,17 +56,13 @@ public class PomodoroTimer implements ActionListener {
 	}
 	
 	public void play() {
-		if(pomodoro.isOver()) {
-			restart();
-		}
-		else {
-			setCounting(true);
-		}
+		setCounting(true);
+		stopWatch.restart();
 	}
 	
 	public void stop() {
+		stopWatch.stop();
 		setCounting(false);
-		stopWatch.restart();
 	}
 	
 	private void setCounting(final boolean counting) {
@@ -91,23 +73,18 @@ public class PomodoroTimer implements ActionListener {
 		this.homeCard = homeCard;
 	}
 	
-	public void restart() {
-		setCounting(true);
-		setPomodoro();
-		stopWatch.restart();
-		timePad.updateMinutes(pomodoro.getMinutes());
-		timePad.updateSeconds(pomodoro.getSeconds());
-	}
-	
 	public void updatePomodoroTime(final int minutes, final int seconds) {
-		pomodoro.setInitialMinutes(minutes);
-		pomodoro.setInitialSeconds(seconds);
+		this.setInitialMinutes(minutes);
+		this.setInitialSeconds(seconds);
 		
-		timePad.updateMinutes(minutes);
-		timePad.updateSeconds(seconds);
+		timePad.update(minutes, seconds);
 	}
 
 	public boolean getCounting() {
 		return counting;
+	}
+	
+	private void restartTimePad() {
+		timePad.update(this.getInitialMinutes(), this.getInitialSeconds());
 	}
 }
