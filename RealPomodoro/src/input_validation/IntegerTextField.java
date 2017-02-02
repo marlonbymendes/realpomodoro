@@ -85,6 +85,11 @@ public class IntegerTextField extends JTextField {
 	    }
 	}
 	
+	public void setText(final int integer) {
+		final String integerString = Integer.toString(integer);
+		this.setText(integerString);
+	}
+	
 	private void setFontStyle() {
 		final int FONT_SIZE = 20;
 		final Font font = new Font(FontConstants.APP_FONT_NAME, FontConstants.APP_FONT_STYLE, FONT_SIZE);

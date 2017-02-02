@@ -19,6 +19,7 @@ public class IntegerInputPanel extends JPanel {
 	
 	private String message;
 	private JLabel messageLabel;
+	private int initialNumber;
 	
 	private IntegerTextField integerInput;
 	
@@ -34,13 +35,19 @@ public class IntegerInputPanel extends JPanel {
 		initPanel();
 		
 		setMessage(message);
+		setInitialNumber(initialNumber);
 		setLabel();
 		setIntegerInput();
 		setInputPanel();
-		integerInput.setText(Integer.toString(initialNumber));
+		integerInput.setText(initialNumber);
 		
 		
 		addAllComponents();
+	}
+
+	private void setInitialNumber(final int initialNumber) {
+		this.initialNumber = initialNumber;
+		
 	}
 
 	private void initPanel() {
@@ -105,5 +112,10 @@ public class IntegerInputPanel extends JPanel {
 
 	public void setUpdated(final boolean status) {
 		integerInput.setUpdated(status);
+	}
+
+	public void restart() {
+		integerInput.setText(initialNumber);
+		integerInput.setUpdated(false);
 	}
 }

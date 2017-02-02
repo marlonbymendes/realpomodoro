@@ -51,16 +51,17 @@ public class SettingsDoneButton extends JButton {
 		public void actionPerformed(final ActionEvent event) {
 			final boolean wasPomodoroUpdated = settingsCard.wasPomodoroUpdated();
 			if(wasPomodoroUpdated) {
-				final boolean isPomodoroRunning = home.isPomodoroRunning();
+				updateInitialPomodoroTime();
+				settingsCard.setPomodoroUpdated(false);
 				
-				if(!isPomodoroRunning) {
-					updatePomodoroTimer();
-				}
-				else {
+				final boolean isPomodoroRunning = home.isPomodoroRunning();
+				if(isPomodoroRunning) {
 					showPomodoroIsRunningMessage();
 				}
-				
-				settingsCard.setPomodoroUpdated(false);
+				else {
+					pomodoroTimer.restartTimePad();
+				}
+
 			}
 			
 			home.showHomeCard();
@@ -79,18 +80,23 @@ public class SettingsDoneButton extends JButton {
 		this.pomodoroTimer = home.getPomodoroTimer();
 	}
 	
-	private void updatePomodoroTimer() {
+	private void updateInitialPomodoroTime() {
 		int minutes = settingsCard.getMinutes();
 		int seconds = settingsCard.getSeconds();
 		
-		pomodoroTimer.updatePomodoroTime(minutes, seconds);
+		System.out.printf("Minutes = %d\n", minutes);
+		System.out.printf("Seconds = %d\n", seconds);
+		
+		pomodoroTimer.setInitialTime(minutes, seconds);
 	}
 	
 	private void showPomodoroIsRunningMessage() {
-		
-		System.out.println("POMODOO IS RUNNING");
-		final String POMODORO_IS_RUNNING = "There is a pomodoro running.Do you want to update it's time anyways?";
-		
-		final int user_answer = JOptionPane.showConfirmDialog(null, POMODORO_IS_RUNNING, "Pomodoro is running", JOptionPane.YES_NO_OPTION);
+		final String TITLE = "Pomodoro settings";
+		final String POMODORO_IS_RUNNING = "There is a pomodoro running.\n" + 
+										   "The next pomodoro will have the new time.";
+		JOptionPane.showMessageDialog(null,
+		    POMODORO_IS_RUNNING,
+		    TITLE,
+		    JOptionPane.INFORMATION_MESSAGE);
 	}
 }

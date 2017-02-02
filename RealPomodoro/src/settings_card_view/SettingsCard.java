@@ -120,4 +120,9 @@ public class SettingsCard extends JPanel {
 		minutesInputPanel.setUpdated(false);
 		secondsInputPanel.setUpdated(false);
 	}
+
+	public void restartMinutesAndSeconds() {
+		minutesInputPanel.restart();
+		secondsInputPanel.restart();
+	}
 }
