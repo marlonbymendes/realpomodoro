@@ -14,7 +14,8 @@ import pomodoro.PomodoroTimer;
 
 public class StartButton extends JButton {
 	
-	PomodoroTimer pomodoroTimer;
+	private PomodoroTimer pomodoroTimer;
+	private HomeCard homeCard;
 	
 	private final static String START_BUTTON_NAME = "S";
 	private final static String PAUSE_BUTTON_NAME = "P";
@@ -23,10 +24,11 @@ public class StartButton extends JButton {
 	public final static int Y_SIZE = 35;
 	public final static Dimension BUTTON_DIMENSION = new Dimension(X_SIZE, Y_SIZE);
 	
-	public StartButton(final PomodoroTimer pomodoroTimer) {
+	public StartButton(final PomodoroTimer pomodoroTimer, final HomeCard homeCard) {
 		super();
 		initButton();
 		setPomodoroTimer(pomodoroTimer);
+		setHomeCard(homeCard);
 	}
 	
 	private class StartButtonListener implements ActionListener {
@@ -36,6 +38,7 @@ public class StartButton extends JButton {
 			
 			if(startStatus) {
 				setPauseButtonStyle();
+				homeCard.setPomodoroRunning(true);
 				pomodoroTimer.play();
 			}
 			else {
@@ -88,5 +91,10 @@ public class StartButton extends JButton {
 		StyledViewFactory.setButtonStyle(this);
 		addActionListener(new StartButtonListener());
 		setStartButtonStyle();
+	}
+	
+	private void setHomeCard(final HomeCard homeCard) {
+		this.homeCard = homeCard;
+		
 	}
 }

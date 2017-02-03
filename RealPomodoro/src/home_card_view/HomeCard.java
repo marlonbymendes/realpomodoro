@@ -22,21 +22,22 @@ public class HomeCard extends JPanel {
 	
 	private PomodoroTimer pomodoroTimer;
 	private Home home;
+	private boolean pomodoroRunning;
 	
 	private PomodoroCounting pomodoroCounting;
 	
 	public HomeCard(Home home) {
 		super();
 		sethome(home);
-		
+
 		setHomeCard();
-		
 		setSettingsButtonPanel();
 		setTimePad();
 		setPomodoroTimer();
 		setStartButton(pomodoroTimer);
 		setStartButtonPanel();
 		setPomodoroCounting();
+		setPomodoroRunning(false);
 		
 		addAllComponentsToHomeCard();
 	}
@@ -82,10 +83,9 @@ public class HomeCard extends JPanel {
 		final boolean isAutoRunEnabled = home.isAutoRunEnabled();
 		if(!isAutoRunEnabled) {
 			startButton.setStartButtonStyle();
-			
-			
 			home.toFront();
 			JOptionPane.showMessageDialog(null, "Pomodoro is over.");
+			setPomodoroRunning(false);
 		}
 		else {
 			pomodoroTimer.play();
@@ -105,7 +105,7 @@ public class HomeCard extends JPanel {
 	}
 	
 	private void setStartButton(final PomodoroTimer pomodoroTime) {
-		startButton = new StartButton(pomodoroTime);
+		startButton = new StartButton(pomodoroTime, this);
 	}
 
 	private void setTimePad() {
@@ -116,9 +116,15 @@ public class HomeCard extends JPanel {
 		this.home = home;
 	}
 	
-	
 	private void setPomodoroCounting() {
 		pomodoroCounting = new PomodoroCounting();
 	}
 	
+	public void setPomodoroRunning(final boolean status) {
+		pomodoroRunning = status;
+	}
+	
+	public boolean isPomodoroRunning() {
+		return this.pomodoroRunning;
+	}
 }

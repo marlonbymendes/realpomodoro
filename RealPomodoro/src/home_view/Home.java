@@ -85,8 +85,6 @@ public class Home extends JFrame {
 	}
 	
 	public boolean isPomodoroRunning() {
-		final PomodoroTimer pomodoroTimer = homeCard.getPomodoroTimer();
-		final boolean running = pomodoroTimer.getCounting();
-		return running;
+		return homeCard.isPomodoroRunning();
 	}
 }
