@@ -1,13 +1,9 @@
 package main;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import home_view.Home;
+import utils.FileUtils;
 
 public class Main {
 
@@ -16,42 +12,10 @@ public class Main {
 		
 		Home home = new Home();
 		home.showHome();
+		
+		FileUtils fileReader = new FileUtils();
+		final String fileTestName = "file_test.txt";
+		final String output = fileReader.getStringInResourcesFile(fileTestName);
+		System.out.println(output);
 	}
-	
-	public  void readFile(String fileName) throws IOException  
-	 {  
-	  FileInputStream inputStream=null;  
-	    
-	  try {  
-	   // Getting ClassLoader obj  
-	   ClassLoader classLoader = this.getClass().getClassLoader();  
-	   // Getting resource(File) from class loader  
-	   
-	   final String filePath = "resources/" + fileName;
-	   File configFile=new File(classLoader.getResource(filePath).getFile());  
-	    
-	   inputStream = new FileInputStream(configFile);  
-	   
-	   BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));  
-	   String line;  
-	   while ((line = reader.readLine()) != null) {  
-	   System.out.println(line);  
-	   }  
-	   
-	   reader.close();  
-	  
-	  
-	  } catch (FileNotFoundException e) {  
-	  
-	   e.printStackTrace();  
-	  }catch (IOException e) {  
-	  
-	   e.printStackTrace();  
-	  }  
-	  finally {  
-	   inputStream.close();  
-	  }  
-	  
-	    
-	 }
 }

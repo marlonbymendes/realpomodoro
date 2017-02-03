@@ -44,6 +44,15 @@ public class PomodoroCounting extends JPanel {
 		updateText();
 	}
 	
+	public void restartPomodoros() {
+		totalPomodoros = 0;
+		
+	}
+	
+	private void saveTotalPomodorosInFile() {
+		
+	}
+	
 	private void initPomodoroCounting() {
 		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		setBackground(AppColors.HOME_BACKGROUND);
@@ -63,7 +72,7 @@ public class PomodoroCounting extends JPanel {
 	
 	private  void setRestartButton() {
 		this.restartButton = new RestartPomodoroCountingButton();
-		this.add(Box.createRigidArea(new Dimension(30 + 26, 0)));
+		this.add(Box.createRigidArea(new Dimension(50, 0)));
 		this.add(restartButton);
 	}
 }
