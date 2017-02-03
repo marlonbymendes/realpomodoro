@@ -1,7 +1,9 @@
 package home_card_view;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
+import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -14,14 +16,18 @@ public class PomodoroCounting extends JPanel {
 	
 	private JLabel countingText;
 	private JLabel countingNumber;
+	private RestartPomodoroCountingButton restartButton;
 	
 	private final String COUNTING_MESSAGE = "Pomodoros in this session: ";
 	
 	public PomodoroCounting() {
 		super();
+		
 		initPomodoroCounting();
 		totalPomodoros = 0;
 		updateText();
+		
+		setRestartButton();
 	}
 	
 	private void updatePomodoros() {
@@ -53,5 +59,11 @@ public class PomodoroCounting extends JPanel {
 		
 		final int COUNTING_NUMBER_FONT_SIZE = 17;
 		countingNumber = StyledViewFactory.createStyledLabel("", COUNTING_NUMBER_FONT_SIZE);
+	}
+	
+	private  void setRestartButton() {
+		this.restartButton = new RestartPomodoroCountingButton();
+		this.add(Box.createRigidArea(new Dimension(30 + 26, 0)));
+		this.add(restartButton);
 	}
 }

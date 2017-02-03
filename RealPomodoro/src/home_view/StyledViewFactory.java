@@ -2,6 +2,7 @@ package home_view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
@@ -66,5 +67,13 @@ public class StyledViewFactory {
 	public static String formatInteger(final Integer integer) {
 		final String FORMAT = "%02d";
 		return String.format(FORMAT, integer);
+	}
+	
+	
+	public static FlowLayout createFlowLayoutWithNoGaps() {
+		FlowLayout flowLayout  = new FlowLayout(FlowLayout.LEFT);
+		flowLayout.setVgap(0);
+		flowLayout.setHgap(0);
+		return flowLayout;
 	}
 }

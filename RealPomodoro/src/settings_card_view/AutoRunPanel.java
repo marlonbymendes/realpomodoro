@@ -43,9 +43,7 @@ public class AutoRunPanel extends JPanel {
 	}
 	
 	private void setAutoRunPanel() {
-		FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
-		flowLayout.setVgap(0);
-		flowLayout.setHgap(0);
+		FlowLayout flowLayout = StyledViewFactory.createFlowLayoutWithNoGaps();
 		this.setLayout(flowLayout);
 		
 		this.setOpaque(true);

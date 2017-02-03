@@ -52,10 +52,12 @@ public class HomeCard extends JPanel {
 		add(settingsButtonPanel);
 		StyledViewFactory.addPad(this, 1, 5);
 		add(timePad);
-		StyledViewFactory.addPad(this, 1, 200);
-		add(startButtonPanel);
-		StyledViewFactory.addPad(this, 1, 10);
+		
+		StyledViewFactory.addPad(this, 1, 20);
 		add(pomodoroCounting);
+		
+		StyledViewFactory.addPad(this, 1, 190);
+		add(startButtonPanel);
 	}
 	
 	private void setSettingsButtonPanel() {

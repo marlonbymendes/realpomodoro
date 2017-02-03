@@ -51,9 +51,7 @@ public class IntegerInputPanel extends JPanel {
 	}
 
 	private void initPanel() {
-		FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
-		flowLayout.setVgap(0);
-		flowLayout.setHgap(0);
+		FlowLayout flowLayout = StyledViewFactory.createFlowLayoutWithNoGaps();
 		this.setLayout(flowLayout);
 		this.setBackground(AppColors.HOME_BACKGROUND);
 		
@@ -87,9 +85,7 @@ public class IntegerInputPanel extends JPanel {
 
 	private void setInputPanel() {
 		inputPanel = new JPanel();
-		FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
-		flowLayout.setVgap(0);
-		flowLayout.setHgap(0);
+		FlowLayout flowLayout = StyledViewFactory.createFlowLayoutWithNoGaps();
 		inputPanel.setLayout(flowLayout);
 		
 		inputPanel.setBackground(Color.yellow);
