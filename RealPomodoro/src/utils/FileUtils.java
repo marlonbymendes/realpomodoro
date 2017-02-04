@@ -4,11 +4,11 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class FileUtils {
@@ -46,15 +46,23 @@ public class FileUtils {
 	}
 	
 	public File getFileFromResources(final String fileName) {
-		  final ClassLoader classLoader = this.getClass().getClassLoader();    
 		  final String filePath = "resources/" + fileName;
-		  final File file = new File(classLoader.getResource(filePath).getFile());  
+		  final ClassLoader classLoader = this.getClass().getClassLoader();    
+		  final URL URLFile = classLoader.getResource(filePath);
+		  File file;
+		  if(URLFile == null) {
+			  System.out.println("Can't create file " + fileName);
+		  }
+		  else {
+			  file = new File(URLFile.getFile());
+			  return file;
+		  }
 		  
-		  return file;
+		  return null;
 	}
 	
 	
-	public static String getLastLineInFile(final File file) throws IOException {
+	public String getLastLineInFile(final File file) throws IOException {
 		FileInputStream inputStream = null;  
 		inputStream = new FileInputStream(file);
 		
