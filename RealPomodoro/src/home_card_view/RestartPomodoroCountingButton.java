@@ -13,8 +13,11 @@ import home_view.AppColors;
 
 public class RestartPomodoroCountingButton extends JButton {
 	
-	public RestartPomodoroCountingButton() {
+	private PomodoroCounting pomodoroCounting;
+
+	public RestartPomodoroCountingButton(final PomodoroCounting pomodoroCounting) {
 		super();
+		setPomodoroCounting(pomodoroCounting);
 		
 		initButton();
 	}
@@ -49,6 +52,11 @@ public class RestartPomodoroCountingButton extends JButton {
 
 		public void actionPerformed(final ActionEvent event) {
 			System.out.println("Restart pomodoro counting button was clicked.");
+			pomodoroCounting.startNewSession();
 		}
+	}
+	
+	private void setPomodoroCounting(final PomodoroCounting pomodoroCounting) {
+		this.pomodoroCounting = pomodoroCounting;
 	}
 }

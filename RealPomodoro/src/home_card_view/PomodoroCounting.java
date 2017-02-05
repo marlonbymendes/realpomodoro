@@ -86,9 +86,6 @@ public class PomodoroCounting extends JPanel {
 	private void saveCurrentPomodorosInFile() {
 		final int currentPomodoros = getTotalPomodoros();
 		final String pomodorosString = Integer.toString(currentPomodoros);
-		System.out.printf("totalPomodoros = %d\n", currentPomodoros);
-		System.out.println("pomodorosString = " + pomodorosString);
-		
 		File pomodoroFile = new File(HISTORY_FILE_PATH);
 		
 		FileUtils fileUtils = new FileUtils();
@@ -127,12 +124,25 @@ public class PomodoroCounting extends JPanel {
 	}
 	
 	private  void setRestartButton() {
-		this.restartButton = new RestartPomodoroCountingButton();
-		this.add(Box.createRigidArea(new Dimension(50, 0)));
+		this.restartButton = new RestartPomodoroCountingButton(this);
+		this.add(Box.createRigidArea(new Dimension(25, 0)));
 		this.add(restartButton);
 	}
 	
+	public void startNewSession() {
+		setTotalPomodoros(0);
+		updateText();
+		createSessionInFile();
+	}
+	
+	private void createSessionInFile() {
+		File pomodoroFile = new File(HISTORY_FILE_PATH);
+		FileUtils fileUtils = new FileUtils();
+		fileUtils.appendToFile(pomodoroFile, "0");
+	}
+
 	private void setTotalPomodoros(final int count) {
 		this.totalPomodoros = count;
 	}
+
 }
