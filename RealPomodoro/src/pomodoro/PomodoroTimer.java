@@ -81,7 +81,7 @@ public class PomodoroTimer extends Pomodoro
 		timePad.update(this.getInitialMinutes(), this.getInitialSeconds());
 	}
 	
-	private void prepareToPlay() {
+	public void prepareToPlay() {
 		this.restart();
 		restartTimePad();
 		setCounting(false);
