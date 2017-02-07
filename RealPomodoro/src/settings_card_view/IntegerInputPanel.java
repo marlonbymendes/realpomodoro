@@ -102,7 +102,12 @@ public class IntegerInputPanel extends JPanel {
 	}
 	
 	public int getInteger() {
-		final Integer integer = new Integer(integerInput.getText());
+		String currentText = integerInput.getText();
+		if(currentText == null || currentText.isEmpty()) {
+			final String ZERO = "0";
+			currentText = ZERO;
+		}
+		final Integer integer = new Integer(currentText);
 		return integer;
 	}
 
