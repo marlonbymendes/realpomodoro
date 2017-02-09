@@ -7,11 +7,14 @@ import java.io.UnsupportedEncodingException;
 
 public class PomodoroHistoryFileUtilities {
 
+	private final static String USER_HOME = System.getProperty("user.home");
+	private final static String SEPARATOR = File.separator;
+	
 	private final static String POMODORO_FOLDER_NAME = "RealPomodoro";
-	private final static String POMODORO_FOLDER_PATH = System.getProperty("user.home") + File.separator
-			+ POMODORO_FOLDER_NAME;
+	private final static String POMODORO_FOLDER_PATH = USER_HOME + SEPARATOR + POMODORO_FOLDER_NAME;
+	
 	private final static String POMODORO_HISTORY_NAME = "pomodoro_history.txt";
-	private final static String POMODORO_HISTORY_PATH = POMODORO_FOLDER_PATH + File.separator + POMODORO_HISTORY_NAME;
+	private final static String POMODORO_HISTORY_PATH = POMODORO_FOLDER_PATH + SEPARATOR + POMODORO_HISTORY_NAME;
 
 	/**
 	 * Creates pomodoro folder if it doesn't exist yet
