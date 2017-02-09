@@ -1,14 +1,10 @@
 package home_card_view;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.FlowLayout;
-import java.io.File;
 import java.net.URL;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
 import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -88,17 +84,21 @@ public class HomeCard extends JPanel {
 
 	public void pomodoroIsOver() {
 		pomodoroCounting.update();
-		playPomodoroIsOverSound();
-
+		
+		
 		final boolean isAutoRunEnabled = home.isAutoRunEnabled();
 		if (!isAutoRunEnabled) {
 			startButton.setStartButtonStyle();
 			home.toFront();
+			playPomodoroIsOverSound();
+			
 			showPomodoroIsOver();
 			setPomodoroRunning(false);
 		} else {
+			playPomodoroIsOverSound();
 			pomodoroTimer.play();
 		}
+		
 	}
 
 	private void showPomodoroIsOver() {
@@ -110,31 +110,10 @@ public class HomeCard extends JPanel {
 		final String SOUND_FILE_NAME = "pomodoro_is_over.wav";
 		final String FILE_PATH = FOLDER + SOUND_FILE_NAME;
 
-		final ClassLoader classLoader = this.getClass().getClassLoader();
-		final URL URLFile = classLoader.getResource(FILE_PATH);
-		File yourFile = null;
-
-		if (URLFile == null) {
-			System.out.println("Can't create file " + SOUND_FILE_NAME);
-		} else {
-			yourFile = new File(URLFile.getFile());
-		}
-
-		try {
-			AudioInputStream stream;
-			AudioFormat format;
-			DataLine.Info info;
-			Clip clip;
-
-			stream = AudioSystem.getAudioInputStream(yourFile);
-			format = stream.getFormat();
-			info = new DataLine.Info(Clip.class, format);
-			clip = (Clip) AudioSystem.getLine(info);
-			clip.open(stream);
-			clip.start();
-		} catch (Exception e) {
-			System.out.println("Can't play sound with path " + FILE_PATH);
-		}
+		ClassLoader classLoader = getClass().getClassLoader();
+		URL url = classLoader.getResource(FILE_PATH);
+		AudioClip clip = Applet.newAudioClip(url);
+		clip.play();
 	}
 
 	private void setPomodoroTimer() {

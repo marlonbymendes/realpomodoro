@@ -2,6 +2,7 @@ package utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
@@ -26,6 +27,9 @@ public class PomodoroHistoryFileUtilities {
 			final boolean folderCreated = pomodoroFolder.mkdirs();
 			if (!folderCreated) {
 				throw new FileNotFoundException();
+			}
+			else {
+				System.out.println("Pomodoro history folder created.");
 			}
 		}
 	}
@@ -60,4 +64,40 @@ public class PomodoroHistoryFileUtilities {
 		}
 		assert prepared;
 	}
+	
+	
+	public static int getPomodorosLastSession() {
+		FileUtils fileUtils = new FileUtils();
+		File pomodoroHistory = new File(POMODORO_HISTORY_PATH);
+		assert pomodoroHistory.exists();
+
+		Integer pomodorosLastSession = 0;		
+		try {
+			String lastLineHistory = fileUtils.getLastLineInFile(pomodoroHistory);
+			assert (lastLineHistory != null) : "Last line in history is null.";
+			assert (!lastLineHistory.isEmpty()) : "Last line in history is empty.";
+			
+			pomodorosLastSession = new Integer(lastLineHistory);
+			
+		} catch (IOException e) {
+			pomodorosLastSession = 0;
+			final String CANT_READ_HISTORY_MESSAGE = "Can't read pomodoro history. Total pomodos will be set to zero";
+			System.out.println(CANT_READ_HISTORY_MESSAGE);
+		}
+		return pomodorosLastSession;
+	}
+	
+	public static void updateHistoryLastLine(final String newLine) {
+		File pomodoroFile = new File(POMODORO_HISTORY_PATH);
+		FileUtils fileUtils = new FileUtils();
+		fileUtils.updateLastLine(pomodoroFile, newLine);
+	}
+	
+	
+	public static void createSessionInHistory() {
+		File pomodoroFile = new File(POMODORO_HISTORY_PATH);
+		FileUtils fileUtils = new FileUtils();
+		fileUtils.appendToFile(pomodoroFile, "0");
+	}
+	
 }
