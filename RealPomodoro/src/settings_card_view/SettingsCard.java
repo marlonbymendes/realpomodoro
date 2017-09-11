@@ -1,5 +1,6 @@
 package settings_card_view;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -56,6 +57,7 @@ public class SettingsCard extends JPanel {
 	
 	private void setPomodoroMessage() {
 		pomodoroMessage = new PomodoroMessage();
+		pomodoroMessage.setAlignmentX(Component.LEFT_ALIGNMENT);
 	}
 	
 	private void addAllComponents() {	
@@ -82,6 +84,7 @@ public class SettingsCard extends JPanel {
 		
 		SettingsDoneButton settingsDoneButton = new SettingsDoneButton(home, this);
 		doneButtonPanel.add(settingsDoneButton);
+		doneButtonPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 	}
 	
 	public boolean isAutoRunEnabled() {
@@ -90,10 +93,12 @@ public class SettingsCard extends JPanel {
 	
 	private void setAutoRunPanel() {
 		autoRunPanel = new AutoRunPanel();
+		autoRunPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 	}
 	
 	private void setResetPanel() {
 		resetPanel = new ResetPanel();
+		resetPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 	}
 	
 	private void setHome(final Home home) {
@@ -103,11 +108,13 @@ public class SettingsCard extends JPanel {
 	private void setMinutesInputPanel() {
 		final String MINUTES_MESSAGE = "Minutes: ";
 		minutesInputPanel = new IntegerInputPanel(MINUTES_MESSAGE, PomodoroConstants.DEFAULT_MINUTES);
+		minutesInputPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 	}
 	
 	private void setSecondsInputPanel() {
 		final String SECONDS_MESSAGE = "Seconds:";
 		secondsInputPanel = new IntegerInputPanel(SECONDS_MESSAGE, PomodoroConstants.DEFAULT_SECONDS);
+		secondsInputPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 	}
 	
 	private void setInputPanels() {
