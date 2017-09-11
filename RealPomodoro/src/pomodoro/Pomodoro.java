@@ -15,6 +15,14 @@ public class Pomodoro {
 		setCurrentMinutes(PomodoroConstants.DEFAULT_MINUTES);
 		setCurrentSeconds(PomodoroConstants.DEFAULT_SECONDS);
 	}
+	
+	public Pomodoro(final int minutes, final int seconds) {
+		setInitialMinutes(PomodoroConstants.DEFAULT_MINUTES);
+		setInitialSeconds(PomodoroConstants.DEFAULT_SECONDS);
+		
+		setCurrentMinutes(minutes);
+		setCurrentSeconds(seconds);
+	}
 		
 	public int getTotalTime() {
 		assert(currentMinutes != null);

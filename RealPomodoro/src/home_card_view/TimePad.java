@@ -85,8 +85,8 @@ public class TimePad extends JPanel {
 	
 	private void initDigits() {
 		initTimeDigits();
-		updateMinutes(getMinutesInLastPomodoro());
-		updateSeconds(getSecondsInLastPomodoro());
+		updateMinutes(PomodoroHistoryFileUtilities.getMinutesInLastPomodoro());
+		updateSeconds(PomodoroHistoryFileUtilities.getSecondsInLastPomodoro());
 		
 		setTwoPointsLabel();
 	}
@@ -102,18 +102,5 @@ public class TimePad extends JPanel {
 		add(minutesLabel);
 		add(twoPoints);
 		add(secondsLabel);
-	}
-	
-	private int getMinutesInLastPomodoro() {
-		final int totalTime = PomodoroHistoryFileUtilities.getLastPomodoroTime();
-		final int minutes = totalTime / PomodoroConstants.SECONDS_IN_A_MINUTE;
-
-		return minutes;
-	}
-	
-	private int getSecondsInLastPomodoro() {
-		final int totalTime = PomodoroHistoryFileUtilities.getLastPomodoroTime();
-		final int seconds = totalTime % PomodoroConstants.SECONDS_IN_A_MINUTE;
-		return seconds;
 	}
 }

@@ -141,11 +141,30 @@ public class PomodoroHistoryFileUtilities {
 		fileUtils.updateLastLine(pomodoroFile, newLine);
 	}
 	
+	public static void updateLastTimeFile(final Integer newTime) {
+		File lastTimeFile = new File(POMODORO_LAST_TIME_PATH);
+		FileUtils fileUtils = new FileUtils();
+		fileUtils.updateLastLine(lastTimeFile, newTime.toString());
+	}
+	
 	
 	public static void createSessionInHistory() {
 		File pomodoroFile = new File(POMODORO_HISTORY_PATH);
 		FileUtils fileUtils = new FileUtils();
 		fileUtils.appendToFile(pomodoroFile, "0");
+	}
+	
+	public static int getMinutesInLastPomodoro() {
+		final int totalTime = PomodoroHistoryFileUtilities.getLastPomodoroTime();
+		final int minutes = totalTime / PomodoroConstants.SECONDS_IN_A_MINUTE;
+
+		return minutes;
+	}
+	
+	public static int getSecondsInLastPomodoro() {
+		final int totalTime = PomodoroHistoryFileUtilities.getLastPomodoroTime();
+		final int seconds = totalTime % PomodoroConstants.SECONDS_IN_A_MINUTE;
+		return seconds;
 	}
 	
 }

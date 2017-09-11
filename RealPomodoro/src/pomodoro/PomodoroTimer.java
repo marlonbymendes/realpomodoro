@@ -7,6 +7,7 @@ import javax.swing.Timer;
 
 import home_card_view.HomeCard;
 import home_card_view.TimePad;
+import utils.PomodoroHistoryFileUtilities;
 
 public class PomodoroTimer extends Pomodoro
 						   implements ActionListener {
@@ -20,7 +21,8 @@ public class PomodoroTimer extends Pomodoro
 	HomeCard homeCard;
 	
 	public PomodoroTimer(final TimePad timePad, final HomeCard homeCard) {
-		super();
+		super(PomodoroHistoryFileUtilities.getMinutesInLastPomodoro(),
+			  PomodoroHistoryFileUtilities.getSecondsInLastPomodoro());;
 		
 		setCounting(false);
 		setTimePad(timePad);
@@ -36,6 +38,8 @@ public class PomodoroTimer extends Pomodoro
 			final int currentSeconds = this.getSeconds();
 			
 			timePad.update(currentMinutes, currentSeconds);
+			updateLastTimeFile();
+			
 		}
 		else if(counting && this.isOver()) {
 			stop();
@@ -45,6 +49,11 @@ public class PomodoroTimer extends Pomodoro
 				homeCard.pomodoroIsOver();
 			}
 		}
+	}
+	
+	private void updateLastTimeFile() {
+		final int currentTotalTime = this.getTotalTime();
+		PomodoroHistoryFileUtilities.updateLastTimeFile(currentTotalTime);
 	}
 	
 	private void setStopWatch() {
