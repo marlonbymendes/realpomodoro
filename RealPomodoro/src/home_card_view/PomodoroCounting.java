@@ -17,9 +17,8 @@ public class PomodoroCounting extends JPanel {
 	
 	private JLabel countingText;
 	private JLabel countingNumber;
-	private RestartPomodoroCountingButton restartButton;
 	
-	private final String COUNTING_MESSAGE = "Pomodoros in this session: ";
+	private final String COUNTING_MESSAGE = "Pomodoros today: ";
 	
 	public PomodoroCounting() {
 		super();
@@ -31,8 +30,6 @@ public class PomodoroCounting extends JPanel {
 		setTotalPomodoros(pomodorosLastSession);
 		
 		updateText();
-		
-		setRestartButton();
 	}
 	
 	private void updatePomodoros() {
@@ -80,13 +77,7 @@ public class PomodoroCounting extends JPanel {
 		
 		final int COUNTING_NUMBER_FONT_SIZE = 17;
 		countingNumber = StyledViewFactory.createStyledLabel("", COUNTING_NUMBER_FONT_SIZE);
-	}
-	
-	private  void setRestartButton() {
-		this.restartButton = new RestartPomodoroCountingButton(this);
-		this.add(Box.createRigidArea(new Dimension(25, 0)));
-		this.add(restartButton);
-	}
+	}	
 	
 	public void startNewSession() {
 		setTotalPomodoros(0);

@@ -28,7 +28,7 @@ public class HomeCard extends JPanel {
 	private Home home;
 	private boolean pomodoroRunning;
 
-	private PomodoroCounting pomodoroCounting;
+	public PomodoroCounting pomodoroCounting;
 
 	public HomeCard(Home home) {
 		super();
@@ -157,5 +157,9 @@ public class HomeCard extends JPanel {
 	
 	public StartButton getStartButton() {
 		return this.startButton;
+	}
+	
+	public PomodoroCounting getPomodoroCounting() {
+		return this.pomodoroCounting;
 	}
 }

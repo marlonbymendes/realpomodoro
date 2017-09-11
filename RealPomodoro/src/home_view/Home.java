@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.border.Border;
 
 import home_card_view.HomeCard;
+import home_card_view.PomodoroCounting;
 import pomodoro.PomodoroTimer;
 import settings_card_view.SettingsCard;
 
@@ -90,5 +91,9 @@ public class Home extends JFrame {
 	
 	public HomeCard getHomeCard() {
 		return this.homeCard;
+	}
+	
+	public PomodoroCounting getPomodoroCounting() {
+		return this.getHomeCard().getPomodoroCounting();
 	}
 }
