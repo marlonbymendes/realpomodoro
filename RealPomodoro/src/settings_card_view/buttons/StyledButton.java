@@ -1,5 +1,6 @@
-package settings_card_view;
+package settings_card_view.buttons;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -32,13 +33,12 @@ public class StyledButton extends JButton {
 		setContentAreaFilled(false);
 		setOpaque(true);
 		setBackground(AppColors.HOME_BACKGROUND);
-		setBackground(Color.BLUE);
+		setBackground(AppColors.BUTTON_GRAY);
 		setMargin(new Insets(0, 0, 0, 0));
 		StyledViewFactory.setWhiteBorder(this);
 		setFont(StyledViewFactory.DEFAULT_FONT);
 		setForeground(AppColors.TIME_PAD_DIGITS);
 		setButtonSize();
-		
 	}
 	
 	private void setButtonSize() {

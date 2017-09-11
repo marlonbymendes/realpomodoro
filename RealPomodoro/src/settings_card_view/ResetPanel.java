@@ -13,6 +13,10 @@ import javax.swing.JPanel;
 import home_view.AppColors;
 import home_view.Home;
 import home_view.StyledViewFactory;
+import settings_card_view.buttons.DailyCountResetButton;
+import settings_card_view.buttons.ResetTimerButton;
+import settings_card_view.buttons.SettingsButtonPanel;
+import settings_card_view.buttons.WeeklyCountResetButton;
 
 public class ResetPanel extends JPanel {
 	
@@ -23,29 +27,28 @@ public class ResetPanel extends JPanel {
 	
 	private JPanel verticalPanel;
 	private JLabel resetLabel;
-	
-	private ResetTimerPanel resetTimerPanel;
+	private SettingsButtonPanel settingsButtonPanel;
 	
 	public ResetPanel() {
 		super();
 		
 		setResetLabel();
 		setResetPanel();
-		setResetTimerPanel();
 		setVerticalPanel();
 	
+		setSettingsButtonPanel();
 		addAllComponents();
 	}
-	
-	private void setResetTimerPanel() {
-		resetTimerPanel = new ResetTimerPanel();
-		resetTimerPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		
+
+	private void setSettingsButtonPanel() {
+		settingsButtonPanel = new SettingsButtonPanel();
+		settingsButtonPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 	}
 
 	private void addAllComponents() {
-		this.add(verticalPanel);
 		addComponentsToVerticalPanel();
+		this.add(verticalPanel);
+		
 	}
 	
 	private void setResetPanel() {
@@ -53,8 +56,7 @@ public class ResetPanel extends JPanel {
 		this.setLayout(flowLayout);
 		
 		this.setOpaque(true);
-		//this.setBackground(AppColors.HOME_BACKGROUND);
-		this.setBackground(Color.RED);
+		this.setBackground(AppColors.HOME_BACKGROUND);
 	}
 	
 	private void setResetLabel() {
@@ -75,7 +77,7 @@ public class ResetPanel extends JPanel {
 	private void addComponentsToVerticalPanel() {
 		verticalPanel.add(resetLabel);
 		verticalPanel.add(Box.createRigidArea(new Dimension(0, 7)));
-		verticalPanel.add(resetTimerPanel);
+		verticalPanel.add(settingsButtonPanel);
 	}
 }
 

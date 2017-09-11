@@ -46,7 +46,6 @@ public class SettingsCard extends JPanel {
 		
 		setDoneButtonPanel();
 		
-		
 		addAllComponents();	
 	}
 	
@@ -71,7 +70,7 @@ public class SettingsCard extends JPanel {
 		
 		add(resetPanel);
 		
-		StyledViewFactory.addPad(this, 0, 134);
+		StyledViewFactory.addPad(this, 0, 40);
 		add(doneButtonPanel);
 	}
 	
