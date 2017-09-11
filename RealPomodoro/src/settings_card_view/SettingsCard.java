@@ -24,6 +24,8 @@ public class SettingsCard extends JPanel {
 	
 	private JPanel doneButtonPanel;
 
+	private ResetPanel resetPanel;
+
 	public static final int INPUT_X_SIZE = 124;
 	public static final int INPUT_Y_SIZE = 87;
 	
@@ -38,7 +40,11 @@ public class SettingsCard extends JPanel {
 		setPomodoroMessage();
 		setInputPanels();
 		setAutoRunPanel();
+		
+		setResetPanel();
+		
 		setDoneButtonPanel();
+		
 		
 		addAllComponents();	
 	}
@@ -58,8 +64,10 @@ public class SettingsCard extends JPanel {
 		add(minutesInputPanel);
 		add(secondsInputPanel);
 		
-		StyledViewFactory.addPad(this, 0, 40);
+		StyledViewFactory.addPad(this, 0, 20);
 		add(autoRunPanel);
+		
+		add(resetPanel);
 		
 		StyledViewFactory.addPad(this, 0, 134);
 		add(doneButtonPanel);
@@ -82,6 +90,10 @@ public class SettingsCard extends JPanel {
 	
 	private void setAutoRunPanel() {
 		autoRunPanel = new AutoRunPanel();
+	}
+	
+	private void setResetPanel() {
+		resetPanel = new ResetPanel();
 	}
 	
 	private void setHome(final Home home) {

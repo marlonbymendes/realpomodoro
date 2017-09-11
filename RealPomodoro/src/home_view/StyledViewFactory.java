@@ -34,9 +34,9 @@ public class StyledViewFactory {
 		return label;
 	}
 	
-	public static void setTimePadBorder(JPanel panel) {
+	public static void setWhiteBorder(JComponent component) {
 		Border border = BorderFactory.createLineBorder(Color.WHITE, 1);
-		panel.setBorder(border);
+		component.setBorder(border);
 	}
 	
 	public static void setButtonStyle(JButton button) {

@@ -2,6 +2,7 @@ package home_card_view;
 
 import java.applet.Applet;
 import java.applet.AudioClip;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.net.URL;
 
@@ -17,7 +18,7 @@ import pomodoro.PomodoroTimer;
 public class HomeCard extends JPanel {
 
 	JPanel settingsButtonPanel;
-
+	
 	private TimePad timePad;
 
 	private JPanel startButtonPanel;
@@ -35,6 +36,7 @@ public class HomeCard extends JPanel {
 
 		setHomeCard();
 		setSettingsButtonPanel();
+		
 		setPomodoroCounting();
 		setTimePad();
 		setPomodoroTimer();
@@ -54,6 +56,7 @@ public class HomeCard extends JPanel {
 	private void addAllComponentsToHomeCard() {
 		add(settingsButtonPanel);
 		StyledViewFactory.addPad(this, 1, 5);
+		
 		add(timePad);
 
 		StyledViewFactory.addPad(this, 1, 20);
