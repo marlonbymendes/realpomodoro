@@ -35,13 +35,13 @@ public class HomeCard extends JPanel {
 
 		setHomeCard();
 		setSettingsButtonPanel();
+		setPomodoroCounting();
 		setTimePad();
 		setPomodoroTimer();
 		setStartButton(pomodoroTimer);
 		setStartButtonPanel();
-		setPomodoroCounting();
 		setPomodoroRunning(false);
-
+		
 		addAllComponentsToHomeCard();
 	}
 

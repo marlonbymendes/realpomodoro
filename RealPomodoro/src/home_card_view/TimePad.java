@@ -13,6 +13,7 @@ import home_view.Home;
 import home_view.StyledViewFactory;
 import pomodoro.PomodoroConstants;
 import settings_card_view.SettingsCard;
+import utils.PomodoroHistoryFileUtilities;
 
 public class TimePad extends JPanel {
 
@@ -84,8 +85,8 @@ public class TimePad extends JPanel {
 	
 	private void initDigits() {
 		initTimeDigits();
-		updateSeconds(PomodoroConstants.DEFAULT_SECONDS);
-		updateMinutes(PomodoroConstants.DEFAULT_MINUTES);
+		updateMinutes(getMinutesInLastPomodoro());
+		updateSeconds(getSecondsInLastPomodoro());
 		
 		setTwoPointsLabel();
 	}
@@ -101,5 +102,18 @@ public class TimePad extends JPanel {
 		add(minutesLabel);
 		add(twoPoints);
 		add(secondsLabel);
+	}
+	
+	private int getMinutesInLastPomodoro() {
+		final int totalTime = PomodoroHistoryFileUtilities.getLastPomodoroTime();
+		final int minutes = totalTime / PomodoroConstants.SECONDS_IN_A_MINUTE;
+
+		return minutes;
+	}
+	
+	private int getSecondsInLastPomodoro() {
+		final int totalTime = PomodoroHistoryFileUtilities.getLastPomodoroTime();
+		final int seconds = totalTime % PomodoroConstants.SECONDS_IN_A_MINUTE;
+		return seconds;
 	}
 }

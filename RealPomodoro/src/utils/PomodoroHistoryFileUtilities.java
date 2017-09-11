@@ -111,6 +111,30 @@ public class PomodoroHistoryFileUtilities {
 		return pomodorosLastSession;
 	}
 	
+	public static int getLastPomodoroTime() {
+		FileUtils fileUtils = new FileUtils();
+		File pomodoroHistory = new File(POMODORO_LAST_TIME_PATH);
+		assert pomodoroHistory.exists();
+
+		
+		Integer lastTime = 0;
+		
+		try {
+			String lastLineHistory = fileUtils.getLastLineInFile(pomodoroHistory);
+			assert (lastLineHistory != null) : "Last line in history is null.";
+			assert (!lastLineHistory.isEmpty()) : "Last line in history is empty.";
+			
+			lastTime = new Integer(lastLineHistory);
+			
+		} catch (IOException e) {
+			lastTime = PomodoroConstants.TOTAL_POMODORO_TIME_IN_SECONDS;
+			final String CANT_READ_LAST_TIME_MESSAGE = "Can't read pomodoro last time file. Last time will be set to default";
+			System.out.println(CANT_READ_LAST_TIME_MESSAGE);
+		}
+		
+		return lastTime;
+	}
+	
 	public static void updateHistoryLastLine(final String newLine) {
 		File pomodoroFile = new File(POMODORO_HISTORY_PATH);
 		FileUtils fileUtils = new FileUtils();
