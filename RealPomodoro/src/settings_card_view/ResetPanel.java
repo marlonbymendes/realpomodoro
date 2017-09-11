@@ -29,8 +29,12 @@ public class ResetPanel extends JPanel {
 	private JLabel resetLabel;
 	private SettingsButtonPanel settingsButtonPanel;
 	
-	public ResetPanel() {
+	private Home home;
+	
+	public ResetPanel(final Home home) {
 		super();
+		
+		setHome(home);
 		
 		setResetLabel();
 		setResetPanel();
@@ -41,7 +45,7 @@ public class ResetPanel extends JPanel {
 	}
 
 	private void setSettingsButtonPanel() {
-		settingsButtonPanel = new SettingsButtonPanel();
+		settingsButtonPanel = new SettingsButtonPanel(home);
 		settingsButtonPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 	}
 
@@ -78,6 +82,15 @@ public class ResetPanel extends JPanel {
 		verticalPanel.add(resetLabel);
 		verticalPanel.add(Box.createRigidArea(new Dimension(0, 7)));
 		verticalPanel.add(settingsButtonPanel);
+	}
+	
+	
+	private void setHome(Home home) {
+		this.home = home;
+	}
+	
+	private Home getHome() {
+		return home;
 	}
 }
 

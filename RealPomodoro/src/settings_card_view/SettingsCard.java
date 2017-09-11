@@ -96,7 +96,7 @@ public class SettingsCard extends JPanel {
 	}
 	
 	private void setResetPanel() {
-		resetPanel = new ResetPanel();
+		resetPanel = new ResetPanel(getHome());
 		resetPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 	}
 	
@@ -142,5 +142,9 @@ public class SettingsCard extends JPanel {
 	public void restartMinutesAndSeconds() {
 		minutesInputPanel.restart();
 		secondsInputPanel.restart();
+	}
+	
+	private Home getHome() {
+		return home;
 	}
 }

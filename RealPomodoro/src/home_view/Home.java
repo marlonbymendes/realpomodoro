@@ -87,4 +87,8 @@ public class Home extends JFrame {
 	public boolean isPomodoroRunning() {
 		return homeCard.isPomodoroRunning();
 	}
+	
+	public HomeCard getHomeCard() {
+		return this.homeCard;
+	}
 }

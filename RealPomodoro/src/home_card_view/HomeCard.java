@@ -154,4 +154,8 @@ public class HomeCard extends JPanel {
 	public boolean isPomodoroRunning() {
 		return this.pomodoroRunning;
 	}
+	
+	public StartButton getStartButton() {
+		return this.startButton;
+	}
 }

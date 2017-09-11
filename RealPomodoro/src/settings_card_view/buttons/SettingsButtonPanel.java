@@ -23,8 +23,12 @@ public class SettingsButtonPanel extends JPanel {
 	
 	private StyledButton[] allButtons;
 
-	public SettingsButtonPanel() {
+	private Home home;
+	
+	public SettingsButtonPanel(final Home home) {
 		super();
+		
+		setHome(home);
 		
 		setSettingsButtonPanel();
 		createButtons();
@@ -38,7 +42,7 @@ public class SettingsButtonPanel extends JPanel {
 	}
 	
 	private void createButtons() {
-		resetTimerButton = new ResetTimerButton();
+		resetTimerButton = new ResetTimerButton(getHome());
 		dailyCountResetButton = new DailyCountResetButton();
 		weeklyCountResetButton = new WeeklyCountResetButton();
 		
@@ -60,4 +64,11 @@ public class SettingsButtonPanel extends JPanel {
 		}
 	}
 	
+	private void setHome(Home home) {
+		this.home = home;
+	}
+	
+	private Home getHome() {
+		return home;
+	}
 }
