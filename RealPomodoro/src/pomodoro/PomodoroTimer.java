@@ -93,6 +93,7 @@ public class PomodoroTimer extends Pomodoro
 	public void prepareToPlay() {
 		this.restart();
 		restartTimePad();
+		PomodoroHistoryFileUtilities.updateLastTimeFile(PomodoroConstants.TOTAL_POMODORO_TIME_IN_SECONDS);
 		setCounting(false);
 	}
 }
