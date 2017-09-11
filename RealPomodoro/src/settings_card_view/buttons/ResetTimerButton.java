@@ -29,7 +29,7 @@ public class ResetTimerButton extends StyledButton {
 		public void actionPerformed(final ActionEvent event) {
 			System.out.println("Reset timer");
 			pomodoroTimer.resetPomodoroTimerAndPad();
-			getHome().getHomeCard().getStartButton().setStartButtonStyle();
+			getHome().getHomeCard().getStartButton().prepareToStop();
 		}
 	}
 	
