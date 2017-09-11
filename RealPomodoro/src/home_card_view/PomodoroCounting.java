@@ -24,7 +24,7 @@ public class PomodoroCounting extends JPanel {
 	public PomodoroCounting() {
 		super();
 		
-		PomodoroHistoryFileUtilities.preparePomodoroHistoryFile();
+		PomodoroHistoryFileUtilities.preparePomodoroHistoryFiles();
 		initPomodoroCounting();
 		
 		final int pomodorosLastSession = PomodoroHistoryFileUtilities.getPomodorosLastSession();

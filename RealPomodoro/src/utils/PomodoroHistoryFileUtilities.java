@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
+import pomodoro.PomodoroConstants;
+
 public class PomodoroHistoryFileUtilities {
 
 	private final static String USER_HOME = System.getProperty("user.home");
@@ -16,7 +18,10 @@ public class PomodoroHistoryFileUtilities {
 	
 	private final static String POMODORO_HISTORY_NAME = "pomodoro_history.txt";
 	private final static String POMODORO_HISTORY_PATH = POMODORO_FOLDER_PATH + SEPARATOR + POMODORO_HISTORY_NAME;
-
+	
+	private final static String POMODORO_LAST_TIME_NAME = "pomodoro_last_time.txt";
+	private final static String POMODORO_LAST_TIME_PATH = POMODORO_FOLDER_PATH + SEPARATOR + POMODORO_LAST_TIME_NAME;
+	
 	/**
 	 * Creates pomodoro folder if it doesn't exist yet
 	 * @throws FileNotFoundException if folder didn't exist but couldn't create it
@@ -49,12 +54,31 @@ public class PomodoroHistoryFileUtilities {
 			System.out.println("Pomodoro history file created.");
 		}
 	}
+	
+	/**
+	 * Creates pomodoro last time file if it doesn't exist yet
+	 * @throws FileNotFoundException if file didn't exist but couldn't create it
+	 * @throws UnsupportedEncodingException
+	 */
+	public static void createPomodoroLastTimeFile() throws FileNotFoundException,
+	  UnsupportedEncodingException {
+		File pomodoroFile = new File(POMODORO_LAST_TIME_PATH);
+		if (!pomodoroFile.exists()) {
+			PrintWriter writer = new PrintWriter(POMODORO_LAST_TIME_PATH, "UTF-8");
+			
+			final String POMODORO_TOTAL_TIME = PomodoroConstants.TOTAL_POMODORO_TIME_IN_SECONDS.toString();
+			writer.println(POMODORO_TOTAL_TIME);
+			writer.close();
+			System.out.println("Pomodoro last time file created.");
+		}
+	}
 
-	public static void preparePomodoroHistoryFile() {
+	public static void preparePomodoroHistoryFiles() {
 		boolean prepared = true;
 		try {
 			createPomodoroFolder();
 			createPomodoroHistoryFile();
+			createPomodoroLastTimeFile();
 		} catch (FileNotFoundException e) {
 			prepared = false;
 			e.printStackTrace();
