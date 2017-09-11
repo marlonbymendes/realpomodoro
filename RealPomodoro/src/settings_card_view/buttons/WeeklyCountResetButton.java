@@ -1,5 +1,8 @@
 package settings_card_view.buttons;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class WeeklyCountResetButton extends StyledButton {
 	
 	private final static String LABEL = "Weekly count";
@@ -8,6 +11,15 @@ public class WeeklyCountResetButton extends StyledButton {
 	
 	public WeeklyCountResetButton() {
 		super(LABEL, X_SIZE_PROPORTION, Y_SIZE);
+		
+		this.addActionListener(new Listener());
+
 	}
 
+	private class Listener implements ActionListener {
+
+		public void actionPerformed(final ActionEvent event) {
+			System.out.println("Reset weekly count");
+		}
+	}
 }

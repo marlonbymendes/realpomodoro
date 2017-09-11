@@ -43,7 +43,7 @@ public class PomodoroTimer extends Pomodoro
 		}
 		else if(counting && this.isOver()) {
 			stop();
-			prepareToPlay();
+			resetPomodoroTimerAndPad();
 			updateLastTimeFile(PomodoroConstants.TOTAL_POMODORO_TIME_IN_SECONDS);
 			
 			if(homeCard != null) {
@@ -90,7 +90,7 @@ public class PomodoroTimer extends Pomodoro
 		timePad.update(this.getInitialMinutes(), this.getInitialSeconds());
 	}
 	
-	public void prepareToPlay() {
+	public void resetPomodoroTimerAndPad() {
 		this.restart();
 		restartTimePad();
 		setCounting(false);

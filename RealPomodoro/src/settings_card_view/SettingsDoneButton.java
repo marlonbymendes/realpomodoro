@@ -59,7 +59,7 @@ public class SettingsDoneButton extends JButton {
 					showPomodoroIsRunningMessage();
 				}
 				else {
-					pomodoroTimer.prepareToPlay();
+					pomodoroTimer.resetPomodoroTimerAndPad();
 				}
 
 			}
