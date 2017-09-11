@@ -38,12 +38,13 @@ public class PomodoroTimer extends Pomodoro
 			final int currentSeconds = this.getSeconds();
 			
 			timePad.update(currentMinutes, currentSeconds);
-			updateLastTimeFile();
+			updateLastTimeFile(this.getTotalTime());
 			
 		}
 		else if(counting && this.isOver()) {
 			stop();
 			prepareToPlay();
+			updateLastTimeFile(PomodoroConstants.TOTAL_POMODORO_TIME_IN_SECONDS);
 			
 			if(homeCard != null) {
 				homeCard.pomodoroIsOver();
@@ -51,9 +52,8 @@ public class PomodoroTimer extends Pomodoro
 		}
 	}
 	
-	private void updateLastTimeFile() {
-		final int currentTotalTime = this.getTotalTime();
-		PomodoroHistoryFileUtilities.updateLastTimeFile(currentTotalTime);
+	private void updateLastTimeFile(final int totalTime) {
+		PomodoroHistoryFileUtilities.updateLastTimeFile(totalTime);
 	}
 	
 	private void setStopWatch() {
