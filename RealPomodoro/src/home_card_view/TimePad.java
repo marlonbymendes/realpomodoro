@@ -36,7 +36,7 @@ public class TimePad extends JPanel {
 		setBackground(AppColors.HOME_BACKGROUND);
 		setOpaque(true);
 		
-		StyledViewFactory.setTimePadBorder(this);
+		StyledViewFactory.setWhiteBorder(this);
 		
 		Dimension TIME_PAD_DIMENSION = new Dimension(TIME_PAD_X_SIZE, TIME_PAD_Y_SIZE);
 		StyledViewFactory.forceComponentSize(this, TIME_PAD_DIMENSION);

@@ -48,6 +48,12 @@ public class StartButton extends JButton {
 		}
 	}
 	
+	public void prepareToStop() {
+		setStartButtonStyle();
+		pomodoroTimer.stop();
+		homeCard.setPomodoroRunning(false);
+	}
+	
 	public void setStartButtonStyle() {
 		setText(START_BUTTON_NAME);
 		setBackground(AppColors.APP_GREEN);

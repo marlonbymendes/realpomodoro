@@ -2,6 +2,7 @@ package home_card_view;
 
 import java.applet.Applet;
 import java.applet.AudioClip;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.net.URL;
 
@@ -17,7 +18,7 @@ import pomodoro.PomodoroTimer;
 public class HomeCard extends JPanel {
 
 	JPanel settingsButtonPanel;
-
+	
 	private TimePad timePad;
 
 	private JPanel startButtonPanel;
@@ -27,7 +28,7 @@ public class HomeCard extends JPanel {
 	private Home home;
 	private boolean pomodoroRunning;
 
-	private PomodoroCounting pomodoroCounting;
+	public PomodoroCounting pomodoroCounting;
 
 	public HomeCard(Home home) {
 		super();
@@ -35,6 +36,7 @@ public class HomeCard extends JPanel {
 
 		setHomeCard();
 		setSettingsButtonPanel();
+		
 		setPomodoroCounting();
 		setTimePad();
 		setPomodoroTimer();
@@ -54,12 +56,13 @@ public class HomeCard extends JPanel {
 	private void addAllComponentsToHomeCard() {
 		add(settingsButtonPanel);
 		StyledViewFactory.addPad(this, 1, 5);
+		
 		add(timePad);
 
-		StyledViewFactory.addPad(this, 1, 20);
+		StyledViewFactory.addPad(this, 1, 40);
 		add(pomodoroCounting);
 
-		StyledViewFactory.addPad(this, 1, 190);
+		StyledViewFactory.addPad(this, 1, 150);
 		add(startButtonPanel);
 	}
 
@@ -150,5 +153,13 @@ public class HomeCard extends JPanel {
 
 	public boolean isPomodoroRunning() {
 		return this.pomodoroRunning;
+	}
+	
+	public StartButton getStartButton() {
+		return this.startButton;
+	}
+	
+	public PomodoroCounting getPomodoroCounting() {
+		return this.pomodoroCounting;
 	}
 }

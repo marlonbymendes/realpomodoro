@@ -71,7 +71,7 @@ public class IntegerTextField extends JTextField {
 	private class FieldListener implements DocumentListener {
 		@Override
 	    public void insertUpdate(DocumentEvent e) {
-	        setUpdated(true);
+			//setUpdated(true);
 	    }
 
 	    @Override
@@ -86,7 +86,7 @@ public class IntegerTextField extends JTextField {
 	}
 	
 	public void setText(final int integer) {
-		final String integerString = Integer.toString(integer);
+		final String integerString = String.format("%02d", integer);
 		this.setText(integerString);
 	}
 	

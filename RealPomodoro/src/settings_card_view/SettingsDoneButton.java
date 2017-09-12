@@ -59,7 +59,7 @@ public class SettingsDoneButton extends JButton {
 					showPomodoroIsRunningMessage();
 				}
 				else {
-					pomodoroTimer.prepareToPlay();
+					pomodoroTimer.resetPomodoroTimerAndPad();
 				}
 
 			}
@@ -93,7 +93,7 @@ public class SettingsDoneButton extends JButton {
 	private void showPomodoroIsRunningMessage() {
 		final String TITLE = "Pomodoro settings";
 		final String POMODORO_IS_RUNNING = "There is a pomodoro running.\n" + 
-										   "The next pomodoro will have the new time.";
+										   "Reset it or wait for it to finish first";
 		JOptionPane.showMessageDialog(null,
 		    POMODORO_IS_RUNNING,
 		    TITLE,

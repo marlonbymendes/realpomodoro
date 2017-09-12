@@ -18,6 +18,8 @@ public class AppColors {
 	public static final Color LIGHT_GRAY = Color.decode("#ecf0f1");
 	public static final Color MID_GRAY = Color.decode("#4C5A69");
 	
+	public static final Color BUTTON_GRAY = Color.decode("#2e4154");
+	
 	public AppColors() {
 			
 	}

@@ -22,6 +22,12 @@ public class PomodoroHistoryFileUtilities {
 	private final static String POMODORO_LAST_TIME_NAME = "pomodoro_last_time.txt";
 	private final static String POMODORO_LAST_TIME_PATH = POMODORO_FOLDER_PATH + SEPARATOR + POMODORO_LAST_TIME_NAME;
 	
+	private final static String POMODORO_WEEKLY_COUNTING_NAME = "pomodoro_weekly_counting.txt";
+	private final static String POMODORO_WEEKLY_COUNTING_PATH = POMODORO_FOLDER_PATH
+															  + SEPARATOR
+															  + POMODORO_WEEKLY_COUNTING_NAME;
+	
+	
 	/**
 	 * Creates pomodoro folder if it doesn't exist yet
 	 * @throws FileNotFoundException if folder didn't exist but couldn't create it
@@ -79,6 +85,7 @@ public class PomodoroHistoryFileUtilities {
 			createPomodoroFolder();
 			createPomodoroHistoryFile();
 			createPomodoroLastTimeFile();
+			createPomodoroWeeklyCountingFile();
 		} catch (FileNotFoundException e) {
 			prepared = false;
 			e.printStackTrace();
@@ -90,25 +97,52 @@ public class PomodoroHistoryFileUtilities {
 	}
 	
 	
-	public static int getPomodorosLastSession() {
-		FileUtils fileUtils = new FileUtils();
-		File pomodoroHistory = new File(POMODORO_HISTORY_PATH);
-		assert pomodoroHistory.exists();
-
-		Integer pomodorosLastSession = 0;		
-		try {
-			String lastLineHistory = fileUtils.getLastLineInFile(pomodoroHistory);
-			assert (lastLineHistory != null) : "Last line in history is null.";
-			assert (!lastLineHistory.isEmpty()) : "Last line in history is empty.";
+	/**
+	 * Creates pomodoro weekly counting file if it doesn't exist yet
+	 * @throws FileNotFoundException if file didn't exist but couldn't create it
+	 * @throws UnsupportedEncodingException
+	 */
+	public static void createPomodoroWeeklyCountingFile() throws FileNotFoundException,
+	  UnsupportedEncodingException {
+		File pomodoroFile = new File(POMODORO_WEEKLY_COUNTING_PATH);
+		if (!pomodoroFile.exists()) {
+			PrintWriter writer = new PrintWriter(POMODORO_WEEKLY_COUNTING_PATH, "UTF-8");
 			
-			pomodorosLastSession = new Integer(lastLineHistory);
+			writer.println("0");
+			writer.close();
+			System.out.println("Pomodoro weekly counting file was created.");
+		}
+	}
+	
+	public static int getPomodorosLastSession() {
+		Integer pomodorosLastSession = getIntegerInLastLine(POMODORO_HISTORY_PATH);
+		return pomodorosLastSession;
+	}
+	
+	public static int getSavedWeeklyPomodorosCounting() {
+		Integer weeklyCount = getIntegerInLastLine(POMODORO_WEEKLY_COUNTING_PATH);
+		return weeklyCount;
+	}
+	
+	private static int getIntegerInLastLine(final String path) {
+		FileUtils fileUtils = new FileUtils();
+		File file = new File(path);
+		assert file.exists();
+
+		Integer integer = 0;		
+		try {
+			String lastLineHistory = fileUtils.getLastLineInFile(file);
+			assert (lastLineHistory != null) : "Last line in file is null.";
+			assert (!lastLineHistory.isEmpty()) : "Last line in file is empty.";
+			
+			integer = new Integer(lastLineHistory);
 			
 		} catch (IOException e) {
-			pomodorosLastSession = 0;
-			final String CANT_READ_HISTORY_MESSAGE = "Can't read pomodoro history. Total pomodos will be set to zero";
-			System.out.println(CANT_READ_HISTORY_MESSAGE);
+			integer = 0;
+			final String CANT_READ_FILE_MESSAGE = "Can't read last line. It will be assumed as 0";
+			System.out.println(CANT_READ_FILE_MESSAGE);
 		}
-		return pomodorosLastSession;
+		return integer;
 	}
 	
 	public static int getLastPomodoroTime() {
@@ -166,5 +200,16 @@ public class PomodoroHistoryFileUtilities {
 		final int seconds = totalTime % PomodoroConstants.SECONDS_IN_A_MINUTE;
 		return seconds;
 	}
-	
+
+	public static void updateWeeklyPomodorosCounting(String string) {
+		File pomodoroFile = new File(POMODORO_WEEKLY_COUNTING_PATH);
+		FileUtils fileUtils = new FileUtils();
+		fileUtils.updateLastLine(pomodoroFile, string);
+	}
+
+	public static void createNewWeeklyCounting() {
+		File pomodoroFile = new File(POMODORO_WEEKLY_COUNTING_PATH);
+		FileUtils fileUtils = new FileUtils();
+		fileUtils.appendToFile(pomodoroFile, "0");
+	}
 }
