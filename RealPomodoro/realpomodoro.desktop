@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=RealPomodoro
+Exec=java -jar /home/cozinha/RealPomodoro/RealPomodoro.jar
+Icon=/home/cozinha/RealPomodoro/desktop_icon.png
+Type=Application
