@@ -44,7 +44,7 @@ public class SettingsButtonPanel extends JPanel {
 	private void createButtons() {
 		resetTimerButton = new ResetTimerButton(getHome());
 		dailyCountResetButton = new DailyCountResetButton(home.getPomodoroCounting());
-		weeklyCountResetButton = new WeeklyCountResetButton();
+		weeklyCountResetButton = new WeeklyCountResetButton(home.getPomodoroCounting());
 		
 		allButtons = new StyledButton[]{resetTimerButton,
 										dailyCountResetButton,

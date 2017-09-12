@@ -13,8 +13,6 @@ public class DailyCountResetButton extends StyledButton {
 	
 	private PomodoroCounting pomodoroCounting;
 	
-
-
 	public DailyCountResetButton(final PomodoroCounting pomodoroCounting) {
 		super(LABEL, X_SIZE_PROPORTION, Y_SIZE);
 		
@@ -26,7 +24,7 @@ public class DailyCountResetButton extends StyledButton {
 
 		public void actionPerformed(final ActionEvent event) {
 			System.out.println("Reset daily count");
-			getPomodoroCounting().startNewSession();
+			getPomodoroCounting().resetDailyCounting();
 		}
 	}
 	
