@@ -17,7 +17,7 @@ public class PomodoroCounting extends JPanel {
 	
 	
 	private final int COUNTING_TEXT_FONT_SIZE = 15;
-	private final int COUNTING_NUMBER_FONT_SIZE = 17;
+	private final int COUNTING_NUMBER_FONT_SIZE = 19;
 
 	private JPanel verticalPanel;
 	
@@ -25,13 +25,13 @@ public class PomodoroCounting extends JPanel {
 	private Integer dailyPomodoros;
 	private JLabel dailyCountText;
 	private JLabel dailyCount;
-	private final String DAILY_COUNTING_MESSAGE = "Pomodoros today: ";
+	private final String DAILY_COUNTING_MESSAGE = "Pomodoros today:        ";
 	
 	private JPanel weeklyPanel;
 	private JLabel weeklyCountText;
 	private JLabel weeklyCount;
 	private Integer weeklyPomodoros;
-	private static final String WEEKLY_COUNTING_MESSAGE = "Pomodoros this week: ";
+	private static final String WEEKLY_COUNTING_MESSAGE = "Pomodoros this week:  ";
 
 	public PomodoroCounting() {
 		super();

@@ -57,10 +57,10 @@ public class SettingsButtonPanel extends JPanel {
 	
 	
 	private void addButtons() {
-		StyledViewFactory.addPad(this, 0, 8);
+		StyledViewFactory.addPad(this, 0, 4);
 		for(StyledButton button : allButtons) {
 			this.add(button); 
-			StyledViewFactory.addPad(this, 0, 8);
+			StyledViewFactory.addPad(this, 0, 10);
 		}
 	}
 	

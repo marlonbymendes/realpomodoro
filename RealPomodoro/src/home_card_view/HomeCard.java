@@ -59,10 +59,10 @@ public class HomeCard extends JPanel {
 		
 		add(timePad);
 
-		StyledViewFactory.addPad(this, 1, 20);
+		StyledViewFactory.addPad(this, 1, 40);
 		add(pomodoroCounting);
 
-		StyledViewFactory.addPad(this, 1, 190);
+		StyledViewFactory.addPad(this, 1, 150);
 		add(startButtonPanel);
 	}
 

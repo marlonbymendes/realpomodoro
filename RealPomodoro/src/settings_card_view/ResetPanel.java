@@ -64,7 +64,7 @@ public class ResetPanel extends JPanel {
 	}
 	
 	private void setResetLabel() {
-		final String RESET_PANEL_TEXT = "Reset history";
+		final String RESET_PANEL_TEXT = "Reset options";
 		final int fontSize = 17;
 		resetLabel = StyledViewFactory.createStyledLabel(RESET_PANEL_TEXT, fontSize);
 		resetLabel.setBackground(AppColors.HOME_BACKGROUND);
@@ -80,7 +80,7 @@ public class ResetPanel extends JPanel {
 	
 	private void addComponentsToVerticalPanel() {
 		verticalPanel.add(resetLabel);
-		verticalPanel.add(Box.createRigidArea(new Dimension(0, 7)));
+		verticalPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		verticalPanel.add(settingsButtonPanel);
 	}
 	
